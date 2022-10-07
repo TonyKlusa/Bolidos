@@ -8,7 +8,7 @@ export var velocidad_proyectil:int = 100
 export var danio_proyectil:int = 1
 
 ## Atributos onready
-onready var timer_enfriamiento:Timer=$TimerEnfriemiento
+onready var timer_enfriamiento:Timer=$TimerEnfriamiento
 onready var disparo_sfx:AudioStreamPlayer2D = $DiasparoSFX
 onready var esta_enfriado:bool = true
 onready var esta_disparando:bool = false setget set_esta_disparando
@@ -35,22 +35,21 @@ func almacenar_puntos_disparo() -> void:
 	for nodo in get_children():
 		if nodo is Position2D:
 			puntos_disparo.append(nodo)
-	
-##func disparar() -> void:
+			
+func disparar() -> void:
 	esta_enfriado = false
-	disparo_sfx.play()
+	##disparo_sfx.play()
 	timer_enfriamiento.start()
 	for punto_disparo in puntos_disparo:
 		var new_proyectil:Proyectil = proyectil.instance()
 		new_proyectil.crear(
 			punto_disparo.global_position,
-			grt_owner().rotation,
+			get_owner().rotation,
 			velocidad_proyectil,
 			danio_proyectil
 		)
 		print ("pew pew")
-		
 
 
 func _on_TimerEnfriamiento_timeout() -> void:
-		esta_enfriado = true
+	esta_enfriado = true # tiempo de enfriado seteado en 0.8

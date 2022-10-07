@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
-
-[node name="NivelTest" type="Node2D"]
-position = Vector2( 0, 1 )
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 530.196, 292.108 )
