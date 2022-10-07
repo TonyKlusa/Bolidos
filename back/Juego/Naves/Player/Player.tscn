@@ -5,7 +5,7 @@
 [ext_resource path="res://Juego/Naves/Player/Player.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 37.4085
+radius = 39.0128
 
 [node name="Player" type="RigidBody2D"]
 physics_material_override = ExtResource( 2 )
@@ -19,5 +19,5 @@ rotation = 1.5708
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 0.891914 )
+position = Vector2( -1, 1 )
 shape = SubResource( 1 )
