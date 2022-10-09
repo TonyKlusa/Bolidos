@@ -23,3 +23,7 @@ func crear(pos:Vector2,dir:float,vel:float,danio_p:int) ->void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
+
+
+func _on_VisibilityNotifier2D_screen_exited() -> void:
+	queue_free()
