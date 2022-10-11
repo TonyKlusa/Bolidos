@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "Proyectil",
 "language": "GDScript",
 "path": "res://Juego/Proyectiles/Proyectil.gd"
+}, {
+"base": "RayCast2D",
+"class": "RayoLaser",
+"language": "GDScript",
+"path": "res://Juego/Proyectiles/Laser/LaserBeam2D.gd"
 } ]
 _global_script_class_icons={
 "Canion": "",
 "Nivel": "",
 "Player": "",
-"Proyectil": ""
+"Proyectil": "",
+"RayoLaser": ""
 }
 
 [application]
@@ -75,6 +81,11 @@ rotar_antihorario={
 "disparo principal"={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":75,"unicode":0,"echo":false,"script":null)
+ ]
+}
+"disparo secundario"={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":76,"unicode":0,"echo":false,"script":null)
  ]
 }
 

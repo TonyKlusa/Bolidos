@@ -8,9 +8,11 @@ radius = 4.0
 height = 36.0
 
 [node name="Proyectil" type="Area2D"]
+scale = Vector2( 1, 1.4 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 2, 1, 1, 1 )
 rotation = 1.5708
 scale = Vector2( 1, 1.2 )
 texture = ExtResource( 1 )
