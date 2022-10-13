@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Juego/Proyectiles/Canion.gd" type="Script" id=1]
-[ext_resource path="res://Juego/Proyectiles/Proyectil.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Proyectiles/ProyectilPlayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Juego/SFX/DisparoSFX.wav" type="AudioStream" id=3]
 
 [node name="Canion" type="Node2D"]
