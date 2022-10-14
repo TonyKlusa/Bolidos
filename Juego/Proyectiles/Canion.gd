@@ -1,3 +1,4 @@
+#Canion.gd
 class_name Canion
 extends Node2D
 
@@ -12,6 +13,7 @@ onready var timer_enfriamiento:Timer=$TimerEnfriamiento
 onready var disparo_sfx:AudioStreamPlayer2D = $DisparoSFX
 onready var esta_enfriado:bool = true
 onready var esta_disparando:bool = false setget set_esta_disparando
+onready var puede_disparar:bool = false setget set_puede_disparar 
 
 ## Atributos
 var puntos_disparo:Array = []
@@ -19,6 +21,11 @@ var puntos_disparo:Array = []
 ## Setter y Getters
 func set_esta_disparando(disparando: bool) -> void:
 	esta_disparando = disparando
+
+#Para controlar que dispare solo cuando esté vivo.
+func set_puede_disparar(duenio_puede:bool) -> void:
+	puede_disparar = duenio_puede
+	
 
 ## Metodos
 
