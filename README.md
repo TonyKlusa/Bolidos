@@ -1,10 +1,13 @@
-# Bolidos
+# Meteoritos
 
 ***
-Bólios es un juego tipo shmup para PC donde tenemos el control de la nace comandada por N-Pilot para escapar de los enemigos y llegar hasta los confines de la galaxia. Ten cuidado con la lluvia de meteoritos, las naves enemigas que custodian la base.
-Usa el disparo principal, el rayo secundario y el escudo. Pero no te olvides que debes cargarlos en la estacion espacial.
+Meteoritos es un juego del tipo shmup 2D para PC donde debemos controlar la nave comandada por N-Pilot para escapar de los enemigos y llegar hasta los relés de masa que nos conducen a otras galaxias. Ten cuidado con la lluvia de meteoritos, las naves enemigas que custodian las bases, las que pueden aparecer en cualquier momento y muchas cosas mas. Sirvete de tu disparo principal, tu rayo secundario y tu escudo, pero no olvides que estos ultimos deben recargarse en las estaciones de recarga.
 ***
 ***Engine:*** Godot v3.2.2
+
 ***Lenguaje:*** GDScript
-***Plataforma:*** Shmup
-***
+
+***Plataforma:*** PC
+
+***Genero:*** Shmup
+
