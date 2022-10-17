@@ -8,6 +8,7 @@ enum ESTADO{SPAWN,VIVO,INVENCIBLE,MUERTO}
 export var potencia_motor:int = 20
 export var potencia_rotacion:int = 280
 export var estela_maxima:int = 150
+export var hitpoints:float = 15.0
 
 ## Atributos
 var empuje:Vector2 = Vector2.ZERO
@@ -76,7 +77,7 @@ func controlador_estados(nuevo_estado:int) -> void:
 		ESTADO.MUERTO:
 			colisionador.set_deferred("disabled", true)
 			canion.set_puede_disparar(false)
-			Eventos.emit_signal("nave_destruida", global_position, 2) #La señal de que el player muere activa la explosión
+			Eventos.emit_signal("nave_destruida", global_position, 2) #La señal del player que muere activa la explosión
 			queue_free()
 		_:
 			print("error de estado")
@@ -123,6 +124,11 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 
 func destruir() -> void:
 	controlador_estados(ESTADO.MUERTO)
+	
+func recibir_danio(danio:float) -> void:
+	hitpoints -= danio
+	if hitpoints <= 0.0:
+		destruir()
 
 
 
