@@ -198,7 +198,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 
 [node name="Escudo" type="Area2D"]
@@ -211,14 +211,17 @@ position = Vector2( -11, 0 )
 shape = SubResource( 1 )
 
 [node name="Abriendo1" type="Sprite" parent="."]
+visible = false
 rotation = 1.5708
 texture = ExtResource( 3 )
 
 [node name="Abriendo2" type="Sprite" parent="."]
+visible = false
 rotation = 1.5708
 texture = ExtResource( 4 )
 
 [node name="Completo" type="Sprite" parent="."]
+visible = false
 position = Vector2( -9, 0 )
 rotation = 1.5708
 texture = ExtResource( 2 )
