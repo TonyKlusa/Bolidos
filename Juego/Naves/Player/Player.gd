@@ -21,18 +21,18 @@ onready var laser:RayoLaser = $LaserBeam2D
 onready var estela:Estela = $EstelaPuntoInicio/Trail2D
 onready var motor_sfx:Motor = $MotorSFX
 onready var colisionador:CollisionShape2D = $CollisionShape2D
+onready var impacto_sfx: AudioStreamPlayer = $Impacto_SFX
+onready var escudo : Escudo = $Escudo
+
 
 
 ## Metodos
 func _ready() -> void:
 	controlador_estados(estado_actual)
-
 	
 func _unhandled_input(event: InputEvent) -> void:
-	#
 	if not esta_input_activo():
 		return
-	
 	#Disparo Rayo secundario
 	if event.is_action_pressed("disparo secundario"):
 		laser.set_is_casting(true)
@@ -46,7 +46,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("mover_atras"):
 		estela.set_max_points(0)
 		motor_sfx.sonido_on()
-	
+		
+##escudo
+	if event.is_action_pressed("escudo") and not escudo.get_esta_activado():
+		escudo.activar()
+		
 	#sonido de motor
 	if (event.is_action_released("mover_adelante") 
 		or event.is_action_released("mover_atras")):
@@ -129,6 +133,8 @@ func recibir_danio(danio:float) -> void:
 	hitpoints -= danio
 	if hitpoints <= 0.0:
 		destruir()
+	impacto_sfx.play()
+
 
 
 

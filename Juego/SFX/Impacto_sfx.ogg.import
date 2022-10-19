@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Impacto_sfx.ogg-bd255e1fd4fbb9aeb1d88525e1640837.oggstr"
+
+[deps]
+
+source_file="res://Juego/SFX/Impacto_sfx.ogg"
+dest_files=[ "res://.import/Impacto_sfx.ogg-bd255e1fd4fbb9aeb1d88525e1640837.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
