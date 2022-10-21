@@ -8,6 +8,7 @@ enum ESTADO{SPAWN,VIVO,INVENCIBLE,MUERTO}
 export var potencia_motor:int = 20
 export var potencia_rotacion:int = 280
 export var estela_maxima:int = 150
+export var hitpoints:float = 15.0
 
 ## Atributos
 var empuje:Vector2 = Vector2.ZERO
@@ -20,18 +21,18 @@ onready var laser:RayoLaser = $LaserBeam2D
 onready var estela:Estela = $EstelaPuntoInicio/Trail2D
 onready var motor_sfx:Motor = $MotorSFX
 onready var colisionador:CollisionShape2D = $CollisionShape2D
+onready var impacto_sfx: AudioStreamPlayer = $Impacto_SFX
+onready var escudo : Escudo = $Escudo
+
 
 
 ## Metodos
 func _ready() -> void:
 	controlador_estados(estado_actual)
-
 	
 func _unhandled_input(event: InputEvent) -> void:
-	#
 	if not esta_input_activo():
 		return
-	
 	#Disparo Rayo secundario
 	if event.is_action_pressed("disparo secundario"):
 		laser.set_is_casting(true)
@@ -45,7 +46,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("mover_atras"):
 		estela.set_max_points(0)
 		motor_sfx.sonido_on()
-	
+		
+##escudo
+	if event.is_action_pressed("escudo") and not escudo.get_esta_activado():
+		escudo.activar()
+		
 	#sonido de motor
 	if (event.is_action_released("mover_adelante") 
 		or event.is_action_released("mover_atras")):
@@ -76,7 +81,7 @@ func controlador_estados(nuevo_estado:int) -> void:
 		ESTADO.MUERTO:
 			colisionador.set_deferred("disabled", true)
 			canion.set_puede_disparar(false)
-			Eventos.emit_signal("nave_destruida", global_position, 2) #La señal de que el player muere activa la explosión
+			Eventos.emit_signal("nave_destruida", global_position, 2) #La señal del player que muere activa la explosión
 			queue_free()
 		_:
 			print("error de estado")
@@ -123,6 +128,13 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 
 func destruir() -> void:
 	controlador_estados(ESTADO.MUERTO)
+	
+func recibir_danio(danio:float) -> void:
+	hitpoints -= danio
+	if hitpoints <= 0.0:
+		destruir()
+	impacto_sfx.play()
+
 
 
 

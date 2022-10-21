@@ -14,10 +14,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Juego/Proyectiles/Canion.gd"
 }, {
+"base": "Area2D",
+"class": "Escudo",
+"language": "GDScript",
+"path": "res://Juego/Naves/Player/Escudo/Escudo.gd"
+}, {
 "base": "Line2D",
 "class": "Estela",
 "language": "GDScript",
 "path": "res://Juego/Naves/Player/Estela/Trail2D.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Meteorito",
+"language": "GDScript",
+"path": "res://Juego/Meteoritos/Meteorito.gd"
+}, {
+"base": "Position2D",
+"class": "MeteoritoSpawner",
+"language": "GDScript",
+"path": "res://MeteoritoSpawner.gd"
 }, {
 "base": "AudioStreamPlayer2D",
 "class": "Motor",
@@ -46,7 +61,10 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Canion": "",
+"Escudo": "",
 "Estela": "",
+"Meteorito": "",
+"MeteoritoSpawner": "",
 "Motor": "",
 "Nivel": "",
 "Player": "",
@@ -109,6 +127,11 @@ rotar_antihorario={
 "disparo secundario"={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":76,"unicode":0,"echo":false,"script":null)
+ ]
+}
+escudo={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":74,"unicode":0,"echo":false,"script":null)
  ]
 }
 

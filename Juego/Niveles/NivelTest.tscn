@@ -4,7 +4,7 @@
 [ext_resource path="res://default_env.tres" type="Environment" id=2]
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=3]
 [ext_resource path="res://Juego/Explosiones/Explosion.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Juego/EnnemigoDummy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Juego/Enemigos/EnnemigoDummy.tscn" type="PackedScene" id=5]
 
 [node name="NivelTest" type="Node2D"]
 position = Vector2( 0, 1 )
