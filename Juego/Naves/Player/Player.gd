@@ -134,7 +134,11 @@ func recibir_danio(danio:float) -> void:
 	if hitpoints <= 0.0:
 		destruir()
 	impacto_sfx.play()
+	
+#Destruido por meteorito
 
-
-
-
+func _on_Player_body_entered(body: Node) -> void:
+		if body is Meteorito:
+#			$AnimationPlayer.play("impacto_meteorito")
+			body.destruir()
+			destruir()

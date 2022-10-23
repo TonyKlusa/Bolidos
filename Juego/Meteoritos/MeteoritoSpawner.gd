@@ -18,7 +18,7 @@ func spawnear_meteorito() -> void:
 	Eventos.emit_signal("spawn_meteorito",
 	global_position,
 	direccion,
-	tamanio_meteorito_aleatorio
+	tamanio_meteorito_aleatorio()
 	)
 
 

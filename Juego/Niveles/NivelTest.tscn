@@ -1,18 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://default_env.tres" type="Environment" id=2]
 [ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=3]
 [ext_resource path="res://Juego/Explosiones/Explosion.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juego/Enemigos/EnnemigoDummy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Juego/Meteoritos/MeteoritoSpawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Juego/Meteoritos/Meteorito.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Juego/Explosiones/ExplosionMeteorito.tscn" type="PackedScene" id=8]
 
 [node name="NivelTest" type="Node2D"]
 position = Vector2( 0, 1 )
 script = ExtResource( 3 )
 explosion = ExtResource( 4 )
+meteorito = ExtResource( 7 )
+explosion_meteorito = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 530.196, 292.108 )
+position = Vector2( 1267, 220 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 2 )
@@ -20,3 +25,19 @@ environment = ExtResource( 2 )
 [node name="EnnemigoDummy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 941, 211 )
 scale = Vector2( 5, 5 )
+
+[node name="MeteoritoSpawner" parent="." instance=ExtResource( 6 )]
+position = Vector2( 221, 113 )
+direccion = Vector2( 2, 1 )
+
+[node name="MeteoritoSpawner2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1652, 122 )
+direccion = Vector2( -2, 1 )
+
+[node name="MeteoritoSpawner3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 206, 636 )
+direccion = Vector2( 2, -1 )
+
+[node name="MeteoritoSpawner4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1652, 618 )
+direccion = Vector2( -2, -1 )
