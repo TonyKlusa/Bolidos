@@ -1,0 +1,381 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Juego/Meteoritos/MeteoritoSpawner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.gd" type="Script" id=2]
+[ext_resource path="res://Juego/SFX/advertencia_meteoritos.ogg" type="AudioStream" id=3]
+[ext_resource path="res://TemporalAssets/kenney_fontpackage (1)/Fonts/Kenney Future.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 967.5, 8 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 966, 6 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8, 544 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.5, 297.093 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 1326.32, 9.33582 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 1420, 18 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 16.5, 918 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 11.75, 912.5 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 45
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=10]
+default_font = SubResource( 9 )
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpawnTimer:autostart")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "advertencia"
+length = 5.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 0.83, 1.28, 1.6, 2.04 ),
+"transitions": PoolRealArray( 1, 0.297302, 1, 0.297302, 1, 0.297302 ),
+"update": 1,
+"values": [ true, true, true, true, true, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 0.83, 1.28, 1.6, 2.04, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.75 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.75 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.75 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("advertencia_sfx:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("advertencia_sfx:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.32, 5, 5.02 ),
+"transitions": PoolRealArray( 1, 1, 1, 1.36604 ),
+"update": 0,
+"values": [ 0.0, 0.0, -80.0, -80.0 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("SpawnTimer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 3.49 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ -1 ],
+"method": "start"
+} ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "default"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="SectorMeteoritos" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="BordeNavePlayer" type="Node2D" parent="."]
+
+[node name="borde_superior" type="StaticBody2D" parent="BordeNavePlayer"]
+collision_layer = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Line2D" type="Line2D" parent="BordeNavePlayer/borde_superior"]
+visible = false
+position = Vector2( -48, -736 )
+points = PoolVector2Array( -912, 192, 1023, 192 )
+default_color = Color( 0.517647, 1, 0.4, 1 )
+
+[node name="borde_superior" type="CollisionShape2D" parent="BordeNavePlayer/borde_superior"]
+position = Vector2( 7.5, -544 )
+shape = SubResource( 2 )
+
+[node name="borde_inferior" type="StaticBody2D" parent="BordeNavePlayer"]
+position = Vector2( 0, 3 )
+collision_layer = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Line2D" type="Line2D" parent="BordeNavePlayer/borde_inferior"]
+visible = false
+position = Vector2( -48, 352 )
+points = PoolVector2Array( -912, 192, 1017, 192 )
+default_color = Color( 0.517647, 1, 0.4, 1 )
+
+[node name="borde_inferior" type="CollisionShape2D" parent="BordeNavePlayer/borde_inferior"]
+position = Vector2( 4, 545 )
+shape = SubResource( 3 )
+
+[node name="borde_derecho" type="StaticBody2D" parent="BordeNavePlayer"]
+collision_layer = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Line2D" type="Line2D" parent="BordeNavePlayer/borde_derecho"]
+visible = false
+position = Vector2( -64, -1072 )
+scale = Vector2( 1, 1.84286 )
+points = PoolVector2Array( -896, 286.512, -896, 876.899 )
+default_color = Color( 0.517647, 1, 0.4, 1 )
+
+[node name="borde_derecho" type="CollisionShape2D" parent="BordeNavePlayer/borde_derecho"]
+position = Vector2( -960, 0 )
+shape = SubResource( 4 )
+
+[node name="borde_izquierdo" type="StaticBody2D" parent="BordeNavePlayer"]
+position = Vector2( -40, -2 )
+collision_layer = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Line2D" type="Line2D" parent="BordeNavePlayer/borde_izquierdo"]
+visible = false
+position = Vector2( 1896, -976 )
+scale = Vector2( 1, 1.84286 )
+points = PoolVector2Array( -896, 234.419, -896, 824.806 )
+default_color = Color( 0.517647, 1, 0.4, 1 )
+
+[node name="borde_izquierdo" type="CollisionShape2D" parent="BordeNavePlayer/borde_izquierdo"]
+position = Vector2( 1000.5, 3.49998 )
+scale = Vector2( 1, 1.84286 )
+shape = SubResource( 1 )
+
+[node name="DetectorFueraZona" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="borde_superior" type="Area2D" parent="DetectorFueraZona"]
+collision_layer = 0
+collision_mask = 5
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectorFueraZona/borde_superior"]
+position = Vector2( 5.99997, -896 )
+scale = Vector2( 1.06234, -2.67786 )
+shape = SubResource( 5 )
+
+[node name="borde_inferior" type="Area2D" parent="DetectorFueraZona"]
+collision_layer = 0
+collision_mask = 5
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectorFueraZona/borde_inferior"]
+position = Vector2( 17, 918 )
+shape = SubResource( 6 )
+
+[node name="borde_derecho" type="Area2D" parent="DetectorFueraZona"]
+collision_layer = 0
+collision_mask = 5
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectorFueraZona/borde_derecho"]
+position = Vector2( -1386.5, 9 )
+shape = SubResource( 7 )
+
+[node name="borde_izquierdo" type="Area2D" parent="DetectorFueraZona"]
+collision_layer = 0
+collision_mask = 5
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectorFueraZona/borde_izquierdo"]
+position = Vector2( 1414.25, 8.5 )
+shape = SubResource( 8 )
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="MeteoritoSpawner" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( -1168, -728 )
+direccion = Vector2( 2, 1 )
+
+[node name="MeteoritoSpawner2" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( -1168, -336 )
+direccion = Vector2( 2, 0.5 )
+
+[node name="MeteoritoSpawner3" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( -1160, 4 )
+direccion = Vector2( 2, 0 )
+
+[node name="MeteoritoSpawner4" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( -1160, 384 )
+direccion = Vector2( 2, 0.5 )
+
+[node name="MeteoritoSpawner5" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( -1160, 728 )
+direccion = Vector2( 2, -1 )
+
+[node name="MeteoritoSpawner6" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( 1218, -734 )
+direccion = Vector2( -2, 1 )
+
+[node name="MeteoritoSpawner7" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( 1218, -342 )
+direccion = Vector2( -2, 0.5 )
+
+[node name="MeteoritoSpawner8" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( 1226, -2 )
+direccion = Vector2( -2, 0 )
+
+[node name="MeteoritoSpawner9" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( 1226, 378 )
+direccion = Vector2( 2, -0.5 )
+
+[node name="MeteoritoSpawner10" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( 1226, 722 )
+direccion = Vector2( 2, -1 )
+
+[node name="MeteoritoSpawner11" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( 16, 728 )
+direccion = Vector2( 0, -1 )
+
+[node name="MeteoritoSpawner12" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( -592, 728 )
+direccion = Vector2( 1, -1 )
+
+[node name="MeteoritoSpawner13" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( 640, 728 )
+direccion = Vector2( -1, -1 )
+
+[node name="MeteoritoSpawner14" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( 16, -726 )
+direccion = Vector2( 0, 1 )
+
+[node name="MeteoritoSpawner15" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( -592, -726 )
+
+[node name="MeteoritoSpawner16" parent="Spawners" instance=ExtResource( 1 )]
+position = Vector2( 640, -726 )
+direccion = Vector2( -1, 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.9
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 542.0
+color = Color( 0.964706, 0.14902, 0.0431373, 0.560784 )
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+margin_left = 419.0
+margin_top = 475.0
+margin_right = 1387.0
+margin_bottom = 616.0
+rect_scale = Vector2( 1.28574, 1 )
+theme = SubResource( 10 )
+text = "ADVERTENCIA
+LLUVIA DE METEORITOS INMINENTE"
+align = 1
+valign = 1
+
+[node name="advertencia" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/RESET = SubResource( 13 )
+anims/advertencia = SubResource( 11 )
+anims/default = SubResource( 12 )
+
+[node name="advertencia_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -80.0
+bus = "SFX"
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

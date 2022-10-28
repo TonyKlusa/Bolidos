@@ -6,9 +6,9 @@ export var direccion: Vector2 = Vector2(1, 1)
 export var rango_tamanio_meteorito:Vector2 = Vector2(0.5, 2.2)
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	yield(owner, "ready")
-	spawnear_meteorito()
+#func _ready() -> void:
+#	yield(owner, "ready")
+#	spawnear_meteorito() # quito esto porque ya no lo necesio. En Unidad 2.1 sector meteoritos.
 	
 func tamanio_meteorito_aleatorio() -> float:
 	randomize()
