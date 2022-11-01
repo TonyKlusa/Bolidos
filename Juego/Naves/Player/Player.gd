@@ -26,6 +26,7 @@ func get_escudo() -> Escudo:
 #Metodos
 func _ready() -> void:
 	controlador_estados(estado_actual)
+	DatosJuego.set_player_actual(self)
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if not esta_input_activo():

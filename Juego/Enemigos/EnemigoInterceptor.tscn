@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Juego/Naves/NaveBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Enemigos/SpriteSpawn.png" type="Texture" id=2]
@@ -6,15 +6,16 @@
 [ext_resource path="res://Juego/Proyectiles/ProyectilEnemigo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juego/Enemigos/EnemigoInterceptor.gd" type="Script" id=5]
 [ext_resource path="res://Juego/Naves/Player/MaterialFisicol.tres" type="PhysicsMaterial" id=6]
+[ext_resource path="res://Juego/SFX/Impacto_sfx.ogg" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 47, 50 )
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 101.005
+radius = 779.064
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 243.019
+radius = 576.125
 
 [sub_resource type="Animation" id=4]
 resource_name = "default"
@@ -120,12 +121,15 @@ tracks/4/keys = {
 }
 
 [node name="EnemigoInterceptor" instance=ExtResource( 1 )]
+z_index = 40
+z_as_relative = false
 collision_layer = 2
-collision_mask = 13
+collision_mask = 15
 physics_material_override = ExtResource( 6 )
 contacts_reported = 2
 contact_monitor = true
 script = ExtResource( 5 )
+potencia_max = 800.0
 
 [node name="Sprite" parent="." index="0"]
 rotation = -1.5708
@@ -141,7 +145,28 @@ texture = ExtResource( 2 )
 position = Vector2( 1, 0 )
 shape = SubResource( 6 )
 
-[node name="Canion" parent="." index="3"]
+[node name="Impacto_SFX" parent="." index="3"]
+stream = ExtResource( 7 )
+
+[node name="AreaDisparo" type="Area2D" parent="." index="4"]
+collision_layer = 2
+
+[node name="AreanDisparo" type="CollisionShape2D" parent="AreaDisparo" index="0"]
+shape = SubResource( 1 )
+
+[node name="AreaDeteccion" type="Area2D" parent="." index="5"]
+collision_layer = 2
+
+[node name="AreaDeteccion" type="CollisionShape2D" parent="AreaDeteccion" index="0"]
+modulate = Color( 0, 0, 0, 1 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+autoplay = "spawn"
+anims/default = SubResource( 4 )
+anims/spawn = SubResource( 5 )
+
+[node name="Canion" parent="." index="7"]
 position = Vector2( 26, 0 )
 proyectil = ExtResource( 4 )
 cadencia_disparo = 1.2
@@ -153,21 +178,12 @@ position = Vector2( 0, -18 )
 [node name="PuntoDerecho" parent="Canion" index="1"]
 position = Vector2( 0, 18 )
 
-[node name="AreaDisparo" type="Area2D" parent="." index="5"]
-visible = false
+[node name="TimerEnfriamiento" parent="Canion" index="3"]
+wait_time = 0.1
 
-[node name="AreanDisparo" type="CollisionShape2D" parent="AreaDisparo" index="0"]
-shape = SubResource( 1 )
-
-[node name="AreaDeteccion" type="Area2D" parent="." index="6"]
-visible = false
-
-[node name="AreaDeteccion" type="CollisionShape2D" parent="AreaDeteccion" index="0"]
-shape = SubResource( 2 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
-autoplay = "spawn"
-anims/default = SubResource( 4 )
-anims/spawn = SubResource( 5 )
+[connection signal="body_entered" from="AreaDisparo" to="." method="_on_AreaDisparo_body_entered"]
+[connection signal="body_exited" from="AreaDisparo" to="." method="_on_AreaDisparo_body_exited"]
+[connection signal="body_entered" from="AreaDeteccion" to="." method="_on_AreaDeteccion_body_entered"]
+[connection signal="body_exited" from="AreaDeteccion" to="." method="_on_AreaDeteccion_body_exited"]
 
 [editable path="Canion"]

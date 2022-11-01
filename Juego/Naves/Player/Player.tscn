@@ -56,9 +56,9 @@ rotation = 0.0
 [node name="CamaraPlayer" parent="." index="8" instance=ExtResource( 3 )]
 
 [node name="LaserBeam2D" parent="." index="9" instance=ExtResource( 5 )]
-visible = false
 modulate = Color( 0, 1.8, 2, 1 )
 position = Vector2( 37, 0 )
+z_index = 50
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 

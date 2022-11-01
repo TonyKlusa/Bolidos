@@ -403,6 +403,8 @@ tracks/15/keys = {
 }
 
 [node name="Meteorito" type="RigidBody2D"]
+z_index = 30
+z_as_relative = false
 collision_layer = 4
 collision_mask = 15
 physics_material_override = SubResource( 1 )
