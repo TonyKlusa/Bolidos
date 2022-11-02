@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Juego/EstaciondeRecarga/AreaAtracciona.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Estaciones/EstacionEnemiga/BaseEnemiga4.png" type="Texture" id=2]
@@ -21,6 +21,21 @@ height = 84.0
 radius = 22.0
 height = 36.0
 
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
+}
+
 [sub_resource type="Animation" id=8]
 resource_name = "RotacionParcial"
 length = 5.0
@@ -33,7 +48,7 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 2.5, 5 ),
-"transitions": PoolRealArray( 1, 0.535887, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 180.0, 0.0 ]
 }
@@ -138,8 +153,10 @@ rotation = 1.5708
 shape = SubResource( 6 )
 
 [node name="AreaAtraccion" parent="." instance=ExtResource( 1 )]
+collision_mask = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 7 )
 anims/RotacionParcial = SubResource( 8 )
 anims/default = SubResource( 1 )
 anims/rotacion_anti_horario = SubResource( 2 )
