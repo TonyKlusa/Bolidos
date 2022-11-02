@@ -48,23 +48,19 @@ func controlar_energia()-> void:
 func _on_AreaColision_body_entered(body: Node) -> void:
 	if body.has_method("destruir"):
 		body.destruir()
-	
 
 #Cuando se acerca al area de recarga, aumenta la gravedad 
 func _on_AreaRecarga_body_entered(body: Node) -> void:
 	if body is Player:
 		player_en_zona = true
 		nave_player = body
-		
-	body.set_gravity_scale(0.1)
 
 func _on_AreaRecarga_body_exited(body: Node) -> void:
 		if body is Player:
 			player_en_zona = false
-		
-#Cuando sale del area de recarga, la gravedad vuelve a cero
-func _on_AreaColision_body_exited(body: Node) -> void:
-	body.set_gravity_scale(0.0)
+
+
+
 
 
 

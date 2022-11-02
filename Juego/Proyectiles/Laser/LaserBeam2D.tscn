@@ -65,7 +65,7 @@ z_index = 41
 z_as_relative = false
 enabled = true
 cast_to = Vector2( 0, 0 )
-collision_mask = 6
+collision_mask = 70
 collide_with_areas = true
 script = ExtResource( 1 )
 
