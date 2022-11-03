@@ -88,3 +88,13 @@ func esta_input_activo()-> bool:
 		return false
 	return true
 	
+func desactivar_controles() -> void: #Para entrar al rele de Masa por ahora
+	controlador_estados(ESTADO.SPAWN)
+	empuje = Vector2.ZERO
+	motor_sfx.sonido_off()
+	laser.set_is_casting(false)
+
+func _on_DetectorPlayer_body_entered(body: Node) -> void:
+	$DetectorPlayer/CollisionShape2D.set_deferred("disabled", true)
+	$AnimationPlayer.play("super_activado")
+	body.desactivar_controles()
