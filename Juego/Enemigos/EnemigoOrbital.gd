@@ -7,11 +7,11 @@ extends EnemigoBase
 export var rango_max_ataque: float = 1400.0
 
 #Atributo
-var estacion_duenia:Node2D
+var base_duenia:Node2D
 
 func _ready() -> void:
 	canion.set_esta_disparando(true)
-
+	Eventos.connect("base_destruida",self, "_on_base_destruida")
 ## Metodos personalizados
 func rotar_hacia_player() -> void:
 	.rotar_hacia_player()
@@ -23,4 +23,9 @@ func rotar_hacia_player() -> void:
 ## Constructor
 func crear(pos: Vector2, duenia: Node2D) -> void:
 	global_position = pos
-	estacion_duenia = duenia
+	base_duenia = duenia
+
+## Señales externas
+func _on_base_destruida(base: Node2D, _pos) -> void:
+	if base == base_duenia:
+		destruir()

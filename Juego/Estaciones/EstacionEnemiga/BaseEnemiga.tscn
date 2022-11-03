@@ -171,19 +171,19 @@ anims/rotacion_horario = SubResource( 3 )
 stream = ExtResource( 8 )
 bus = "SFX"
 
-[node name="PosicionesSpawn" type="Node2D" parent="."]
+[node name="PosicionesSpawns" type="Node2D" parent="."]
 script = ExtResource( 10 )
 
-[node name="Norte" type="Position2D" parent="PosicionesSpawn"]
+[node name="Norte" type="Position2D" parent="PosicionesSpawns"]
 position = Vector2( 0, 500 )
 
-[node name="Sur" type="Position2D" parent="PosicionesSpawn"]
+[node name="Sur" type="Position2D" parent="PosicionesSpawns"]
 position = Vector2( 0, -500 )
 
-[node name="Oeste" type="Position2D" parent="PosicionesSpawn"]
+[node name="Oeste" type="Position2D" parent="PosicionesSpawns"]
 position = Vector2( 500, 0 )
 
-[node name="Este" type="Position2D" parent="PosicionesSpawn"]
+[node name="Este" type="Position2D" parent="PosicionesSpawns"]
 position = Vector2( -500, 0 )
 
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
