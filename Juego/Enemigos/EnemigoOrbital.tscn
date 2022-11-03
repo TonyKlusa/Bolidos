@@ -56,6 +56,7 @@ contacts_reported = 2
 contact_monitor = true
 script = ExtResource( 3 )
 rango_max_ataque = 1400.0
+velocidad = 400.0
 
 [node name="Sprite" parent="." index="0"]
 rotation = -1.5708
@@ -84,6 +85,13 @@ root_node = NodePath("../Impacto_SFX")
 autoplay = "spawn"
 anims/default = SubResource( 4 )
 anims/spawn = SubResource( 5 )
+
+[node name="DetectorObstaculo" type="RayCast2D" parent="." index="5"]
+enabled = true
+cast_to = Vector2( 1500, 0 )
+collision_mask = 64
+collide_with_areas = true
+collide_with_bodies = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
