@@ -4,6 +4,9 @@ extends Node2D
 
 ## Atribts Export
 export var hitpoints: float = 30.0
+export var orbital: PackedScene = null
+
+
 ## Atributos onready
 onready var impacto_sfx: AudioStreamPlayer2D = $ImpactoSFX
 
@@ -48,3 +51,12 @@ func destruir() -> void:
 	Eventos.emit_signal("base_destruida",self, posiciones_partes)
 #	Eventos.emit_signal("minimapa_objeto_destruido", self)
 	queue_free()
+
+###SeñalesInternas
+func _on_VisibilityNotifier2D_screen_entered() -> void:
+	$VisibilityNotifier2D.queue_free()
+	var new_orbital: EnemigoOrbital = orbital.instance()
+	new_orbital.crear(global_position + $PosicionesSpawn/Norte.global_position, self)
+	Eventos.emit_signal("spawn_orbital",new_orbital)
+	
+##Constructor
