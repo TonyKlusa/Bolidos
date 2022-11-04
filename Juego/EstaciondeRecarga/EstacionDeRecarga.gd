@@ -21,7 +21,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not puede_recargar(event):
 		return
 	controlar_energia()
-#	energia -= radio_energia_entregada
+	#energia -= radio_energia_entregada
 
 	if event.is_action("recarga_escudo"):
 		nave_player.get_escudo().controlar_energia(radio_energia_entregada)
