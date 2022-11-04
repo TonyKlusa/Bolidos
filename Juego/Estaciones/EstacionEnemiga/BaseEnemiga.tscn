@@ -166,7 +166,6 @@ shape = SubResource( 6 )
 position = Vector2( 3.00002, -5.99999 )
 scale = Vector2( 0.760001, 0.760001 )
 collision_layer = 64
-collision_mask = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 7 )
