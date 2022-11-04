@@ -44,15 +44,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("mover_atras"):
 		estela.set_max_points(0)
 		motor_sfx.sonido_on()
-		
+#sonido de motor
+	if (event.is_action_released("mover_adelante") 
+		or event.is_action_released("mover_atras")):
+			motor_sfx.sonido_off()		
 ##escudo
 	if event.is_action_pressed("escudo") and not escudo.get_esta_activado():
 		escudo.activar()
 		
-	#sonido de motor
-	if (event.is_action_released("mover_adelante") 
-		or event.is_action_released("mover_atras")):
-			motor_sfx.sonido_off()
+
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	apply_central_impulse(empuje.rotated(rotation))
@@ -69,8 +69,12 @@ func player_input() -> void:
 	empuje = Vector2.ZERO
 	if Input.is_action_pressed("mover_adelante"):
 		empuje = Vector2(potencia_motor, 0)
+
 	elif Input.is_action_pressed("mover_atras"):
 		empuje = Vector2(-potencia_motor, 0)
+
+	
+	
 # Rotacion
 	dir_rotacion = 0
 	if Input.is_action_pressed("rotar_antihorario"):
