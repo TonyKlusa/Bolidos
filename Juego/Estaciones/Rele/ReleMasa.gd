@@ -1,4 +1,6 @@
 ##ReledeMasa.gd
+class_name ReleMasa
+
 extends Node2D
 
 ## Señal interna

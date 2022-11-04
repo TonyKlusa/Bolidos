@@ -25,6 +25,7 @@ meteorito = ExtResource( 7 )
 explosion_meteorito = ExtResource( 8 )
 sector_meteoritos = ExtResource( 10 )
 enemigo_interceptor = ExtResource( 14 )
+rele_masa = ExtResource( 16 )
 
 [node name="purple" type="Sprite" parent="."]
 visible = false
@@ -117,8 +118,5 @@ z_as_relative = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -629, -1365 )
-
-[node name="ReleMasa" parent="." instance=ExtResource( 16 )]
-position = Vector2( 42, -1380 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

@@ -16,11 +16,15 @@ export var explosion_meteorito: PackedScene = null
 export var sector_meteoritos : PackedScene = null
 export var tiempo_transicion_camara: float = 0.8
 export var enemigo_interceptor: PackedScene = null
+#Para instanciar Rele
+export var rele_masa: PackedScene = null
 
 
 #Atributos
 var meteoritos_totales:int = 0
 var player: Player = null
+var numero_base_enemigas = 0
+
 
 ## Metodos
 
@@ -28,9 +32,27 @@ func _ready() -> void:
 	conectar_seniales()
 	crear_contenedores()
 	player = DatosJuego.get_player_actual()
+	#Cuento nro de bases enemigas para saber cuando destrui todo
+	numero_base_enemigas = contabilizar_bases_enemigas()
 
-	
+
+
 ## Metodos Custom
+func contabilizar_bases_enemigas() -> int:
+	return $ContenedorBaseEnemiga.get_child_count()
+
+func crear_rele() -> void:
+	var new_rele_masa: ReleMasa = rele_masa.instance()
+	var pos_aleatoria: Vector2 = crear_posicion_aleatoria(400.0, 200.0)
+#	var margen: Vector2 = Vector2(600.0, 600.0)
+#	if pos_aleatoria.x < 0:
+#		margen.x *= -1
+#	if pos_aleatoria.y < 0:
+#		margen.y *= -1
+#
+#	new_rele_masa.global_position = player.global_position + (margen + pos_aleatoria)
+	add_child(new_rele_masa)
+	
 func conectar_seniales() -> void:
 	Eventos.connect("disparo", self, "_on_disparo")
 	Eventos.connect("nave_destruida", self, "_on_nave_destruida")
@@ -86,8 +108,13 @@ func crear_explosion(posicion: Vector2,tamanio: float = 1.0, numero: int = 1, in
 		
 func _on_base_destruida(_base, pos_partes: Array) -> void:
 	for posicion in pos_partes:
-		crear_explosion(posicion)
+		crear_explosion(posicion,rand_range(0.5,1.5))
 		yield(get_tree().create_timer(0.5),"timeout")
+	
+	numero_base_enemigas -= 1
+	if numero_base_enemigas == 0:
+		if player:
+			crear_rele()
 		
 func _on_spawn_meteoritos(pos_spawn: Vector2, dir_meteorito: Vector2, tamanio:float) -> void:
 	var new_meteorito:Meteorito = meteorito.instance()
