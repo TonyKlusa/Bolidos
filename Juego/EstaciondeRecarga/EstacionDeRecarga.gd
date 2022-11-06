@@ -20,8 +20,8 @@ var player_en_zona: bool = false
 func _unhandled_input(event: InputEvent) -> void:
 	if not puede_recargar(event):
 		return
+	
 	controlar_energia()
-	#energia -= radio_energia_entregada
 
 	if event.is_action("recarga_escudo"):
 		nave_player.get_escudo().controlar_energia(radio_energia_entregada)
@@ -50,17 +50,15 @@ func _on_AreaColision_body_entered(body: Node) -> void:
 		body.destruir()
 
 #Cuando se acerca al area de recarga, aumenta la gravedad 
-func _on_AreaRecarga_body_entered(body: Node) -> void:
+func _on_AreaRecarga_body_entered(body):
 	if body is Player:
 		player_en_zona = true
 		nave_player = body
 
-func _on_AreaRecarga_body_exited(body: Node) -> void:
-		if body is Player:
-			player_en_zona = false
 
-
-
+func _on_AreaRecarga_body_exited(body):
+	if body is Player:
+		player_en_zona = false
 
 
 

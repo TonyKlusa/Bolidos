@@ -11,7 +11,6 @@ var energia_original:float
 export var energia:float = 18
 export var radio_desgaste:float = -0.6
 
-
 ## Setter y getters
 func get_esta_activado() -> bool:
 	return esta_activado

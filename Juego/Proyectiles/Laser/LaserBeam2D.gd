@@ -71,7 +71,8 @@ func cast_beam(delta: float) -> void:
 		set_is_casting(false)
 #Puedo agregar un sonido de clik 
 		return
-	energia += radio_desgaste * delta
+	#energia += radio_desgaste * delta
+	controlar_energia(radio_desgaste * delta)
 	
 	var cast_point := cast_to
 	
@@ -88,12 +89,11 @@ func cast_beam(delta: float) -> void:
 	fill.points[1] = cast_point
 	beam_particles.position = cast_point * 0.5
 	beam_particles.process_material.emission_box_extents.x = cast_point.length() * 0.5
-
 	
-
-	
-	
-	
+func controlar_energia(consumo:float) ->void:
+	energia += consumo
+	if energia > energia_original:
+			energia = energia_original
 	
 	
 func appear() -> void:
