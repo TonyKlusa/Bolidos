@@ -27,6 +27,7 @@ explosion_meteorito = ExtResource( 8 )
 sector_meteoritos = ExtResource( 10 )
 enemigo_interceptor = ExtResource( 14 )
 rele_masa = ExtResource( 16 )
+tiempo_limite = 12
 
 [node name="HUD" parent="." instance=ExtResource( 17 )]
 
@@ -124,5 +125,8 @@ position = Vector2( -629, -1365 )
 
 [node name="RestartTimer" type="Timer" parent="."]
 
+[node name="ActualizadorTmer" type="Timer" parent="."]
+
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
 [connection signal="timeout" from="RestartTimer" to="." method="_on_RestartTimer_timeout"]
+[connection signal="timeout" from="ActualizadorTmer" to="." method="_on_ActualizadorTmer_timeout"]

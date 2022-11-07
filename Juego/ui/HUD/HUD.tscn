@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Juego/ui/HUD/HUD.gd" type="Script" id=1]
 [ext_resource path="res://TemporalAssets/spaceshooter/PNG/playerShip1_orange.png" type="Texture" id=2]
 [ext_resource path="res://Juego/ui/HUD/ContenedorInformacion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Juego/ui/HUD/ContenedorInformacionEnergia.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -70,10 +71,12 @@ tracks/0/keys = {
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_vertical_guides_": [ 7.0 ]
+"_edit_horizontal_guides_": [ 1071.0 ],
+"_edit_vertical_guides_": [ 7.0, 1914.0 ]
 }
 
 [node name="FadeCanvas" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="FadeCanvas"]
 margin_left = -4.0
@@ -115,13 +118,35 @@ anims/ocultar_suavizado = SubResource( 5 )
 
 [node name="InfoMeteoritos" parent="." instance=ExtResource( 3 )]
 margin_left = 11.0
-margin_top = 988.0
+margin_top = 991.0
 margin_right = 197.0
-margin_bottom = 1067.0
+margin_bottom = 1070.0
 
 [node name="Label" parent="InfoMeteoritos" index="1"]
 text = "METEORITOS
 RESTANTES"
 
+[node name="InfoTiempoRestante" parent="." instance=ExtResource( 3 )]
+
+[node name="Label" parent="InfoTiempoRestante" index="1"]
+margin_left = 1729.0
+margin_top = 10.0
+margin_right = 1726.93
+margin_bottom = 12.0
+text = "TIEMPO
+RESTANTE
+MM:SS"
+
+[node name="InfoLaser" parent="." instance=ExtResource( 4 )]
+margin_left = 1726.0
+margin_top = 991.0
+margin_right = 1912.0
+margin_bottom = 1070.0
+
+[node name="Label" parent="InfoLaser" index="1"]
+text = "ENERGIA Laser"
+
 [editable path="InfoZonaRecarga"]
 [editable path="InfoMeteoritos"]
+[editable path="InfoTiempoRestante"]
+[editable path="InfoLaser"]

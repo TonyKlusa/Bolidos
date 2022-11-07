@@ -8,6 +8,7 @@ onready var contenedor_meteoritos: Node
 onready var contenedor_sector_meteoritos: Node
 onready var camara_nivel: Camera2D = $CamaraNivel
 onready var contenedor_enemigos: Node
+onready var actualizador_timer:Timer = $ActualizadorTmer
 
 #Atributos export
 export var explosion: PackedScene = null
@@ -18,6 +19,9 @@ export var tiempo_transicion_camara: float = 0.8
 export var enemigo_interceptor: PackedScene = null
 #Para instanciar Rele
 export var rele_masa: PackedScene = null
+#tiempo limite de juego en nivel
+export var tiempo_limite:int = 10
+
 
 
 #Atributos
@@ -37,7 +41,7 @@ func _ready() -> void:
 	#Ocultar puntero del mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Eventos.emit_signal("nivel_iniciado")
-	
+	actualizador_timer.start()	
 
 
 
@@ -58,6 +62,10 @@ func crear_rele() -> void:
 	add_child(new_rele_masa)
 	
 func conectar_seniales() -> void:
+	#Eventos.emit_signal("nivel_iniciado")
+	#Eventos.emit_signal("actualizar_tiempo",tiempo_limite)
+	Eventos.emit_signal("nivel_iniciado")
+	Eventos.emit_signal("actualizar_tiempo",tiempo_limite)
 	Eventos.connect("disparo", self, "_on_disparo")
 	Eventos.connect("nave_destruida", self, "_on_nave_destruida")
 	Eventos.connect("spawn_meteorito", self,"_on_spawn_meteoritos")
@@ -65,7 +73,7 @@ func conectar_seniales() -> void:
 	Eventos.connect("nave_en_sector_peligro", self, "_on_nave_en_sector_peligro")
 	Eventos.connect("base_destruida",self,"_on_base_destruida")
 	Eventos.connect("spawn_orbital",self,"_on_spawn_orbital")
-	Eventos.emit_signal("nivel_iniciado")
+	
 	
 	
 func crear_contenedores():
@@ -85,10 +93,21 @@ func crear_contenedores():
 	add_child(contenedor_enemigos)
 	
 	
+#Metodos Custom
+func destruir_nivel()->void:
+	crear_explosion(
+		player.global_position,
+		8.0,
+		2,
+		1.5,
+		Vector2(300.0, 200.0)
+	)	
+	player.destruir()
 	
 func _on_disparo(proyectil:Proyectil) -> void:
 	contenedor_proyectiles.add_child(proyectil)
 	##add_child(proyectil)
+
 
 func _on_nave_destruida(nave: Player, posicion: Vector2, num_explosiones: int) -> void:
 	if nave is Player:
@@ -228,3 +247,10 @@ func _on_RestartTimer_timeout() -> void:
 	yield(get_tree().create_timer(1.0),"timeout")
 	get_tree().reload_current_scene()
 	
+
+
+func _on_ActualizadorTmer_timeout() ->void:
+	tiempo_limite -=1
+	Eventos.emit_signal("actualizar_tiempo", tiempo_limite)
+	if tiempo_limite == 0:
+		destruir_nivel()
