@@ -69,3 +69,8 @@ func _on_actualizar_energia_laser(energia_max: float, energia_actual: float) -> 
 func _on_actualizar_energia_escudo(energia_max: float, energia_actual: float) -> void:
 	info_escudo.mostrar()
 	info_escudo.actualizar_energia(energia_max, energia_actual)
+
+func _on_nave_destruida(nave: NaveBase,_posicion, _explosiones) -> void:
+	if nave is Player:
+		get_tree().call_group("contenedor_info", "set_esta_activo", false)
+		get_tree().call_group("contenedor_info", "Ocultar")

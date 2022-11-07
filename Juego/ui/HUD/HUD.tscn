@@ -106,7 +106,7 @@ autoplay = "fade_in"
 anims/default = SubResource( 1 )
 anims/fade_in = SubResource( 2 )
 
-[node name="InfoZonaRecarga" parent="." instance=ExtResource( 3 )]
+[node name="InfoZonaRecarga" parent="." groups=["contenedor_info"] instance=ExtResource( 3 )]
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 191.0
@@ -116,7 +116,7 @@ margin_bottom = 84.0
 anims/mostrar_suavizado = SubResource( 3 )
 anims/ocultar_suavizado = SubResource( 5 )
 
-[node name="InfoMeteoritos" parent="." instance=ExtResource( 3 )]
+[node name="InfoMeteoritos" parent="." groups=["contenedor_info"] instance=ExtResource( 3 )]
 margin_left = 11.0
 margin_top = 991.0
 margin_right = 197.0
@@ -126,7 +126,7 @@ margin_bottom = 1070.0
 text = "METEORITOS
 RESTANTES"
 
-[node name="InfoTiempoRestante" parent="." instance=ExtResource( 3 )]
+[node name="InfoTiempoRestante" parent="." groups=["contenedor_info"] instance=ExtResource( 3 )]
 
 [node name="Label" parent="InfoTiempoRestante" index="1"]
 margin_left = 1729.0
@@ -137,7 +137,7 @@ text = "TIEMPO
 RESTANTE
 MM:SS"
 
-[node name="InfoLaser" parent="." instance=ExtResource( 4 )]
+[node name="InfoLaser" parent="." groups=["contenedor_info"] instance=ExtResource( 4 )]
 margin_left = 1726.0
 margin_top = 991.0
 margin_right = 1912.0
@@ -146,7 +146,7 @@ margin_bottom = 1070.0
 [node name="Label" parent="InfoLaser" index="1"]
 text = "ENERGIA Laser"
 
-[node name="InfoEscudo" parent="." instance=ExtResource( 4 )]
+[node name="InfoEscudo" parent="." groups=["contenedor_info"] instance=ExtResource( 4 )]
 margin_left = 1727.0
 margin_top = 909.0
 margin_right = 1913.0
