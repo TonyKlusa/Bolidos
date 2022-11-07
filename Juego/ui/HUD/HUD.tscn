@@ -1,0 +1,127 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Juego/ui/HUD/HUD.gd" type="Script" id=1]
+[ext_resource path="res://TemporalAssets/spaceshooter/PNG/playerShip1_orange.png" type="Texture" id=2]
+[ext_resource path="res://Juego/ui/HUD/ContenedorInformacion.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeCanvas/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeCanvas/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "mostrar_suavizado"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "ocultar_suavizado"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 7.0 ]
+}
+
+[node name="FadeCanvas" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="FadeCanvas"]
+margin_left = -4.0
+margin_top = 7.0
+margin_right = 1921.0
+margin_bottom = 1088.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="FadeCanvas/ColorRect"]
+anchor_left = 0.427
+anchor_top = 0.403
+anchor_right = 0.583
+anchor_bottom = 0.609
+margin_left = 0.0249634
+margin_top = 0.356964
+margin_right = 0.724976
+margin_bottom = -0.329041
+mouse_filter = 2
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeCanvas"]
+root_node = NodePath("../..")
+autoplay = "fade_in"
+anims/default = SubResource( 1 )
+anims/fade_in = SubResource( 2 )
+
+[node name="InfoZonaRecarga" parent="." instance=ExtResource( 3 )]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 191.0
+margin_bottom = 84.0
+
+[node name="AnimationPlayer" parent="InfoZonaRecarga" index="0"]
+anims/mostrar_suavizado = SubResource( 3 )
+anims/ocultar_suavizado = SubResource( 5 )
+
+[node name="InfoMeteoritos" parent="." instance=ExtResource( 3 )]
+margin_left = 11.0
+margin_top = 988.0
+margin_right = 197.0
+margin_bottom = 1067.0
+
+[node name="Label" parent="InfoMeteoritos" index="1"]
+text = "METEORITOS
+RESTANTES"
+
+[editable path="InfoZonaRecarga"]
+[editable path="InfoMeteoritos"]

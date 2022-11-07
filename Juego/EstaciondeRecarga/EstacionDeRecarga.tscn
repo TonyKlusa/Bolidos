@@ -168,4 +168,3 @@ bus = "SFX"
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
 [connection signal="body_exited" from="AreaColision" to="." method="_on_AreaColision_body_exited"]
 [connection signal="body_entered" from="AreaRecarga" to="." method="_on_AreaRecarga_body_entered"]
-[connection signal="body_exited" from="AreaRecarga" to="." method="_on_AreaRecarga_body_exited"]

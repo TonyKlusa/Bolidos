@@ -36,6 +36,8 @@ func _ready() -> void:
 	numero_base_enemigas = contabilizar_bases_enemigas()
 	#Ocultar puntero del mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Eventos.emit_signal("nivel_iniciado")
+	
 
 
 
@@ -63,6 +65,7 @@ func conectar_seniales() -> void:
 	Eventos.connect("nave_en_sector_peligro", self, "_on_nave_en_sector_peligro")
 	Eventos.connect("base_destruida",self,"_on_base_destruida")
 	Eventos.connect("spawn_orbital",self,"_on_spawn_orbital")
+	Eventos.emit_signal("nivel_iniciado")
 	
 	
 func crear_contenedores():
@@ -91,12 +94,15 @@ func _on_nave_destruida(nave: Player, posicion: Vector2, num_explosiones: int) -
 	if nave is Player:
 		transicion_camaras(posicion, posicion + crear_posicion_aleatoria(-200.0, 200.0),
 		camara_nivel, tiempo_transicion_camara)
+		$RestartTimer.start()
+		
+	crear_explosion(posicion, 1.0, num_explosiones, 0.6, Vector2(100.0,50.0))
 	
-	for i in range(num_explosiones):
-		var new_explosion: Node2D = explosion.instance()
-		new_explosion.global_position = posicion + crear_posicion_aleatoria(100.0,50.0)
-		add_child(new_explosion)
-		yield(get_tree().create_timer(0.6), "timeout")
+#	for i in range(num_explosiones):
+#		var new_explosion: Node2D = explosion.instance()
+#		new_explosion.global_position = posicion + crear_posicion_aleatoria(100.0,50.0)
+#		add_child(new_explosion)
+#		yield(get_tree().create_timer(0.6), "timeout")
 
 func crear_explosion(posicion: Vector2,tamanio: float = 1.0, numero: int = 1, intervalo: float = 0.0, 
 					rangos_aleatorios: Vector2 = Vector2(0.0, 0.0)) -> void:
@@ -140,6 +146,7 @@ func _on_meteorito_destruido(pos: Vector2) ->void:
 func _on_nave_en_sector_peligro(centro_cam: Vector2, tipo_peligro: String, num_peligros: int) ->void:
 	if tipo_peligro == "Meteorito":
 		crear_sector_meteoritos(centro_cam, num_peligros)
+		Eventos.emit_signal("cambio_numero_meteoritos", num_peligros)
 	elif tipo_peligro == "Enemigo":
 		crear_sector_enemigos(num_peligros)
 			
@@ -189,6 +196,7 @@ func transicion_camaras(desde: Vector2, hasta:Vector2, camara_actual: Camera2D, 
 
 func controlar_meteoritos_restantes() -> void:
 	meteoritos_totales -=1
+	Eventos.emit_signal("cambio_numero_meteoritos", meteoritos_totales)
 	#print(meteoritos_totales)
 	if meteoritos_totales == 0:
 		contenedor_sector_meteoritos.get_child(0).queue_free()
@@ -212,3 +220,11 @@ func _on_TweenCamara_tween_completed(object: Object, key: NodePath) -> void:
 
 func _on_spawn_orbital(enemigo: EnemigoOrbital) -> void:
 	contenedor_enemigos.add_child(enemigo)
+
+
+
+func _on_RestartTimer_timeout() -> void:
+	Eventos.emit_signal("nivel_terminado")
+	yield(get_tree().create_timer(1.0),"timeout")
+	get_tree().reload_current_scene()
+	

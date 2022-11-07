@@ -3,7 +3,8 @@
 [ext_resource path="res://Juego/Meteoritos/MeteoritoSpawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.gd" type="Script" id=2]
 [ext_resource path="res://Juego/SFX/advertencia_meteoritos.ogg" type="AudioStream" id=3]
-[ext_resource path="res://TemporalAssets/kenney_fontpackage (1)/Fonts/Kenney Future.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Juego/fonts/Kenney Future.ttf" type="DynamicFontData" id=4]
+
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 967.5, 8 )

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/CargaSFX.ogg-2eaaff62258b3516488dd6d8abe4aca1.oggstr
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
