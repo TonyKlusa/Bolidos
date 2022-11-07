@@ -146,7 +146,17 @@ margin_bottom = 1070.0
 [node name="Label" parent="InfoLaser" index="1"]
 text = "ENERGIA Laser"
 
+[node name="InfoEscudo" parent="." instance=ExtResource( 4 )]
+margin_left = 1727.0
+margin_top = 909.0
+margin_right = 1913.0
+margin_bottom = 988.0
+
+[node name="Label" parent="InfoEscudo" index="1"]
+text = "ENERGIA ESCUDO"
+
 [editable path="InfoZonaRecarga"]
 [editable path="InfoMeteoritos"]
 [editable path="InfoTiempoRestante"]
 [editable path="InfoLaser"]
+[editable path="InfoEscudo"]

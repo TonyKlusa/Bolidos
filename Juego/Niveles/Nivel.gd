@@ -57,7 +57,7 @@ func crear_rele() -> void:
 		margen.x *= -1
 	if pos_aleatoria.y < 0:
 		margen.y *= -1
-
+		
 	new_rele_masa.global_position = player.global_position + (margen + pos_aleatoria)
 	add_child(new_rele_masa)
 	
