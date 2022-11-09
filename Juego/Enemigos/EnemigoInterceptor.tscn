@@ -120,7 +120,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.6, 0.6 ) ]
 }
 
-[node name="EnemigoInterceptor" instance=ExtResource( 1 )]
+[node name="EnemigoInterceptor" groups=["minimap"] instance=ExtResource( 1 )]
 z_index = 40
 z_as_relative = false
 collision_layer = 2
@@ -145,8 +145,20 @@ texture = ExtResource( 2 )
 position = Vector2( 1, 0 )
 shape = SubResource( 6 )
 
-[node name="Impacto_SFX" parent="." index="3"]
-stream = ExtResource( 7 )
+[node name="Canion" parent="." index="3"]
+position = Vector2( 26, 0 )
+proyectil = ExtResource( 4 )
+cadencia_disparo = 1.2
+velocidad_proyectil = 1200
+
+[node name="PuntoIzquierdo" parent="Canion" index="0"]
+position = Vector2( 0, -18 )
+
+[node name="PuntoDerecho" parent="Canion" index="1"]
+position = Vector2( 0, 18 )
+
+[node name="TimerEnfriamiento" parent="Canion" index="3"]
+wait_time = 0.1
 
 [node name="AreaDisparo" type="Area2D" parent="." index="4"]
 collision_layer = 2
@@ -166,20 +178,8 @@ autoplay = "spawn"
 anims/default = SubResource( 4 )
 anims/spawn = SubResource( 5 )
 
-[node name="Canion" parent="." index="7"]
-position = Vector2( 26, 0 )
-proyectil = ExtResource( 4 )
-cadencia_disparo = 1.2
-velocidad_proyectil = 1200
-
-[node name="PuntoIzquierdo" parent="Canion" index="0"]
-position = Vector2( 0, -18 )
-
-[node name="PuntoDerecho" parent="Canion" index="1"]
-position = Vector2( 0, 18 )
-
-[node name="TimerEnfriamiento" parent="Canion" index="3"]
-wait_time = 0.1
+[node name="Impacto_SFX" parent="." index="7"]
+stream = ExtResource( 7 )
 
 [connection signal="body_entered" from="AreaDisparo" to="." method="_on_AreaDisparo_body_entered"]
 [connection signal="body_exited" from="AreaDisparo" to="." method="_on_AreaDisparo_body_exited"]

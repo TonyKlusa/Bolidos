@@ -266,7 +266,7 @@ tracks/6/keys = {
 [sub_resource type="CircleShape2D" id=5]
 radius = 262.67
 
-[node name="ReleMasa" type="Node2D"]
+[node name="ReleMasa" type="Node2D" groups=["minimap"]]
 scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 3 )
 

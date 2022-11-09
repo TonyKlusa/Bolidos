@@ -19,6 +19,9 @@ func _ready() -> void:
 func _on_nave_destruida(nave: NaveBase, _posicion, _explosion) -> void:
 	if nave is Player:
 		player_objetivo = null
+		
+	if nave.is_in_group("minimapa"):
+		Eventos.emit_signal("minimapa_objeto_destruido", nave)
 
 ## Señales internas
 func _on_Player_body_entered(body: Node) -> void:
