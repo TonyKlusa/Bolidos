@@ -1,21 +1,17 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Juego/Naves/NaveBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Enemigos/SpriteSpawn.png" type="Texture" id=2]
 [ext_resource path="res://Juego/Enemigos/EnemigoInterceptor.png" type="Texture" id=3]
 [ext_resource path="res://Juego/Proyectiles/ProyectilEnemigo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juego/Enemigos/EnemigoInterceptor.gd" type="Script" id=5]
-[ext_resource path="res://Juego/Naves/Player/MaterialFisicol.tres" type="PhysicsMaterial" id=6]
 [ext_resource path="res://Juego/SFX/Impacto_sfx.ogg" type="AudioStream" id=7]
+
+[sub_resource type="PhysicsMaterial" id=8]
+bounce = 0.5
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 47, 50 )
-
-[sub_resource type="CircleShape2D" id=1]
-radius = 779.064
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 576.125
 
 [sub_resource type="Animation" id=4]
 resource_name = "default"
@@ -120,12 +116,31 @@ tracks/4/keys = {
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.6, 0.6 ) ]
 }
 
+[sub_resource type="CircleShape2D" id=1]
+radius = 779.064
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 576.125
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.992157, 1, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [node name="EnemigoInterceptor" groups=["minimap"] instance=ExtResource( 1 )]
-z_index = 40
+z_index = 45
 z_as_relative = false
 collision_layer = 2
 collision_mask = 15
-physics_material_override = ExtResource( 6 )
+physics_material_override = SubResource( 8 )
 contacts_reported = 2
 contact_monitor = true
 script = ExtResource( 5 )
@@ -137,8 +152,9 @@ scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 3 )
 
 [node name="SpriteSpawn" type="Sprite" parent="." index="1"]
+self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -1, -1 )
-scale = Vector2( 1e-05, 1e-05 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="2"]
@@ -160,26 +176,36 @@ position = Vector2( 0, 18 )
 [node name="TimerEnfriamiento" parent="Canion" index="3"]
 wait_time = 0.1
 
-[node name="AreaDisparo" type="Area2D" parent="." index="4"]
-collision_layer = 2
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+autoplay = "spawn"
+anims/default = SubResource( 4 )
+anims/spawn = SubResource( 5 )
+
+[node name="AreaDisparo" type="Area2D" parent="." index="5"]
+scale = Vector2( 0.7, 0.7 )
+collision_layer = 0
 
 [node name="AreanDisparo" type="CollisionShape2D" parent="AreaDisparo" index="0"]
 shape = SubResource( 1 )
 
-[node name="AreaDeteccion" type="Area2D" parent="." index="5"]
-collision_layer = 2
+[node name="AreaDeteccion" type="Area2D" parent="." index="6"]
+scale = Vector2( 0.65, 0.65 )
+collision_layer = 0
 
 [node name="AreaDeteccion" type="CollisionShape2D" parent="AreaDeteccion" index="0"]
 modulate = Color( 0, 0, 0, 1 )
 shape = SubResource( 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
-autoplay = "spawn"
-anims/default = SubResource( 4 )
-anims/spawn = SubResource( 5 )
-
 [node name="Impacto_SFX" parent="." index="7"]
 stream = ExtResource( 7 )
+
+[node name="BarraSalud" parent="." index="8"]
+margin_left = -53.0
+margin_top = -49.0
+margin_right = 46.0
+margin_bottom = -35.0
+rect_scale = Vector2( 0.996148, 0.782134 )
+custom_styles/fg = SubResource( 7 )
 
 [connection signal="body_entered" from="AreaDisparo" to="." method="_on_AreaDisparo_body_entered"]
 [connection signal="body_exited" from="AreaDisparo" to="." method="_on_AreaDisparo_body_exited"]

@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "ProgressBar",
+"class": "BarraSalud",
+"language": "GDScript",
+"path": "res://Juego/ui/BarraSalud/BarraSalud.gd"
+}, {
 "base": "Node2D",
 "class": "BaseEnemiga",
 "language": "GDScript",
@@ -130,6 +135,7 @@ _global_script_classes=[ {
 "path": "res://Juego/Meteoritos/SectorMeteoritos.gd"
 } ]
 _global_script_class_icons={
+"BarraSalud": "",
 "BaseEnemiga": "",
 "CamaraJuego": "",
 "CamaraPlayer": "",

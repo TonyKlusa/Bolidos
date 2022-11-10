@@ -4,10 +4,13 @@ extends Node2D
 
 #Atributos onready
 onready var carga_sfx:  AudioStreamPlayer = $CargaSFX
+onready var barra_energia: ProgressBar = $BarraEnergia
 
 func _ready() -> void:
 	$AnimacionEstaciondeRecarga.play("activado")
-
+	barra_energia.max_value = energia
+	barra_energia.value = energia
+	
 #Atribs Export
 export var energia:float = 6.0 
 export var radio_energia_entregada:float = 0.05
@@ -15,6 +18,9 @@ export var radio_energia_entregada:float = 0.05
 ##Atributos
 var nave_player:Player = null
 var player_en_zona: bool = false
+
+
+
 
 #Metodos  
 func _unhandled_input(event: InputEvent) -> void:
@@ -46,8 +52,9 @@ func controlar_energia()-> void:
 	energia -= radio_energia_entregada
 	if energia <= 0.0:
 		$VacioSFX.play()
-	print("energia estacion", energia)
-
+	#print("energia estacion", energia)
+	barra_energia.value = energia
+	
 ##Señales internas
 #Si colisiona con la estacion se destruye
 func _on_AreaColision_body_entered(body: Node) -> void:

@@ -15,12 +15,13 @@ var estado_actual:int = ESTADO.SPAWN
 onready var colisionador:CollisionShape2D = $CollisionShape2D
 onready var impacto_sfx: AudioStreamPlayer = $Impacto_SFX
 onready var canion:Canion = $Canion
-
-
-
-
+onready var barra_salud: ProgressBar = $BarraSalud
 
 ## Metodos
+func _ready() -> void:
+	barra_salud.set_valores(hitpoints)
+	controlador_estados(estado_actual)
+
 
 
 ## Metodos Custom
@@ -45,6 +46,16 @@ func controlador_estados(nuevo_estado:int) -> void:
 			
 	estado_actual = nuevo_estado
 
+func recibir_danio(danio: float) -> void:
+	
+	hitpoints -= danio
+	if hitpoints <= 0.0:
+		destruir()
+	
+	barra_salud.controlar_barra(hitpoints, true)
+	impacto_sfx.play()
+
+
 
 #Señales internas
  #animaciones
@@ -55,12 +66,6 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 
 func destruir() -> void:
 	controlador_estados(ESTADO.MUERTO)
-	
-func recibir_danio(danio:float) -> void:
-	hitpoints -= danio
-	if hitpoints <= 0.0:
-		destruir()
-	impacto_sfx.play()
 	
 #Destruido por meteorito
 

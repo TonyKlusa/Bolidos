@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Juego/EstaciondeRecarga/AreaAtracciona.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Estaciones/EstacionEnemiga/BaseEnemiga4.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Juego/Enemigos/RutaEnemigo3.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Juego/Enemigos/RutaEnemigo2.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Juego/Enemigos/RutaEnemigo.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Juego/ui/BarraSalud/BarraSalud.tscn" type="PackedScene" id=14]
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 50.0
@@ -141,6 +142,19 @@ tracks/1/keys = {
 "values": [ Color( 0.576471, 0.803922, 0.956863, 0 ) ]
 }
 
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.823529, 0.00784314, 0.996078, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [node name="BaseEnemiga" type="Node2D" groups=["minimap"]]
 z_index = 10
 z_as_relative = false
@@ -195,7 +209,6 @@ shape = SubResource( 6 )
 [node name="AreaAtraccion" parent="." instance=ExtResource( 1 )]
 position = Vector2( 3.99999, 4.00001 )
 scale = Vector2( 0.760001, 0.760001 )
-collision_layer = 64
 
 [node name="SpriteZonaRecarga" parent="AreaAtraccion" index="0"]
 modulate = Color( 0.576471, 0.803922, 0.956863, 0 )
@@ -228,6 +241,15 @@ position = Vector2( 500, 0 )
 position = Vector2( -500, 0 )
 
 [node name="TimerSpawnerEnemigo" type="Timer" parent="."]
+
+[node name="BarraSalud" parent="." instance=ExtResource( 14 )]
+margin_left = 50.0
+margin_top = -289.0
+margin_right = 150.0
+margin_bottom = -275.0
+rect_rotation = 179.965
+custom_styles/fg = SubResource( 9 )
+value = 50.0
 
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
