@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Juego/fonts/Kenney Future.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Juego/Menu/MenuPrincipal.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 75
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.364721, 0.303371, 0.52832, 1 )
+
+[node name="MenuPrincipal" type="Node"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1930.0
+margin_bottom = 1070.0
+color = Color( 0.247059, 0.207843, 0.207843, 1 )
+
+[node name="Button" type="Button" parent="."]
+anchor_right = 0.031
+anchor_bottom = 0.019
+margin_left = 750.0
+margin_top = 454.0
+margin_right = 1138.48
+margin_bottom = 618.48
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+text = "JUGAR"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

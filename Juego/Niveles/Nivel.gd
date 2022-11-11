@@ -21,6 +21,10 @@ export var enemigo_interceptor: PackedScene = null
 export var rele_masa: PackedScene = null
 #tiempo limite de juego en nivel
 export var tiempo_limite:int = 10
+#LasMusica
+export var musica_nivel: AudioStream = null
+export var musica_combate: AudioStream = null
+
 
 
 
@@ -41,7 +45,12 @@ func _ready() -> void:
 	#Ocultar puntero del mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Eventos.emit_signal("nivel_iniciado")
+	#Iniciomusica
+	MusicaJuego.set_streams(musica_nivel, musica_combate)
+	MusicaJuego.play_musica_nivel()
+	#Iniciotimer
 	actualizador_timer.start()	
+	
 
 
 
@@ -178,6 +187,7 @@ func crear_sector_enemigos(num_enemigos: int) -> void:
 		contenedor_enemigos.add_child(new_interceptor)
 
 func crear_sector_meteoritos(centro_cam: Vector2, num_peligros: int) -> void:
+	MusicaJuego.transicion_musicas()
 	meteoritos_totales = num_peligros
 	var new_sector_meteoritos: SectorMeteoritos = sector_meteoritos.instance()
 	new_sector_meteoritos.crear(centro_cam, num_peligros)
@@ -218,6 +228,7 @@ func controlar_meteoritos_restantes() -> void:
 	Eventos.emit_signal("cambio_numero_meteoritos", meteoritos_totales)
 	#print(meteoritos_totales)
 	if meteoritos_totales == 0:
+		MusicaJuego.transicion_musicas()
 		contenedor_sector_meteoritos.get_child(0).queue_free()
 		$Player/CamaraPlayer.set_puede_hacer_zoom(true)
 		
