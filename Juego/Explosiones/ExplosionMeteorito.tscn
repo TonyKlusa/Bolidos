@@ -1,227 +1,116 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Juego/Explosiones/sparkle.png" type="Texture" id=1]
-[ext_resource path="res://Juego/Explosiones/explosion_gradient.tres" type="Texture" id=2]
-[ext_resource path="res://Juego/Explosiones/puff.png" type="Texture" id=3]
-[ext_resource path="res://Juego/SFX/EsplosionSFX.ogg" type="AudioStream" id=4]
-[ext_resource path="res://Juego/Explosiones/puff_smooth.png" type="Texture" id=5]
-[ext_resource path="res://Juego/Explosiones/scraps_gradient.tres" type="Texture" id=6]
-[ext_resource path="res://Juego/Explosiones/ExplosionMeteorito.gd" type="Script" id=7]
+[ext_resource path="res://Juego/Explosiones/meteor_dim1.png" type="Texture" id=1]
+[ext_resource path="res://Juego/Explosiones/meteor_peque1.png" type="Texture" id=2]
+[ext_resource path="res://Juego/Explosiones/meteor_peque2.png" type="Texture" id=3]
+[ext_resource path="res://Juego/Explosiones/meteor_dim2.png" type="Texture" id=4]
+[ext_resource path="res://Juego/Explosiones/meteor_med1.png" type="Texture" id=5]
+[ext_resource path="res://Juego/Explosiones/meteor_med2.png" type="Texture" id=6]
+[ext_resource path="res://Juego/Explosiones/explosionMeteorito.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Juego/Explosiones/ExplosionMeteorito.gd" type="Script" id=8]
+[ext_resource path="res://Juego/Explosiones/puff_smooth.png" type="Texture" id=9]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0.0494297, 0.913043, 1 )
-colors = PoolColorArray( 0.226562, 0.217086, 0.217086, 1, 0.133333, 0.12549, 0.12549, 1, 0.133333, 0.12549, 0.12549, 0 )
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 0.290223 ), 0.0, 3.6562, 0, 0, Vector2( 0.682482, 1 ), -0.0677277, -0.0677277, 0, 0, Vector2( 1, 0.554545 ), -0.29932, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
-
-[sub_resource type="ParticlesMaterial" id=5]
-emission_shape = 1
-emission_sphere_radius = 40.0
-flag_disable_z = true
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 80.0
-initial_velocity_random = 0.6
-angular_velocity = 40.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-damping = 40.0
-damping_random = 0.5
-angle = 360.0
-angle_random = 1.0
-scale = 2.6
-scale_random = 0.5
-scale_curve = SubResource( 4 )
-color_ramp = SubResource( 2 )
-
-[sub_resource type="Curve" id=6]
-_data = [ Vector2( 0, 0.377273 ), 0.0, 2.60769, 0, 0, Vector2( 0.761062, 0.986364 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.322727 ), -0.564845, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 6 )
-
-[sub_resource type="ParticlesMaterial" id=8]
-trail_divisor = 50
-emission_shape = 1
-emission_sphere_radius = 15.0
-flag_disable_z = true
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 1000.0
-initial_velocity_random = 0.4
-orbit_velocity = 0.3
-orbit_velocity_random = 1.0
-tangential_accel = 1000.0
-tangential_accel_random = 1.0
-damping = 1500.0
-scale = 0.2
-scale_random = 0.2
-scale_curve = SubResource( 7 )
-color_ramp = ExtResource( 6 )
-
-[sub_resource type="Curve" id=9]
-_data = [ Vector2( 0, 0.0409091 ), 0.0, 8.35303, 0, 0, Vector2( 0.251678, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.993289, 0.0136364 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=10]
-curve = SubResource( 9 )
-
-[sub_resource type="ParticlesMaterial" id=11]
-flag_disable_z = true
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 350.0
-initial_velocity_random = 0.5
-angular_velocity = 80.0
-angular_velocity_random = 0.8
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-damping = 100.0
-damping_random = 0.85
-angle = 220.0
-angle_random = 1.0
-scale = 2.0
-scale_random = 0.2
-scale_curve = SubResource( 10 )
-color_ramp = ExtResource( 2 )
-
-[sub_resource type="Gradient" id=12]
-offsets = PoolRealArray( 0, 0.130909, 0.345455, 0.607273, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 0.648972, 0.164062, 1, 1, 0.475624, 0.136719, 1, 0.888672, 0.17704, 0.17704, 1, 0.203922, 0.203922, 0.203922, 1 )
-
-[sub_resource type="GradientTexture" id=13]
-gradient = SubResource( 12 )
-
-[sub_resource type="Curve" id=14]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.483222, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=15]
-curve = SubResource( 14 )
-
-[sub_resource type="ParticlesMaterial" id=16]
-lifetime_randomness = 0.6
-emission_shape = 1
-emission_sphere_radius = 50.0
-flag_disable_z = true
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-radial_accel = 200.0
-radial_accel_random = 0.3
-tangential_accel = 100.0
-scale = 0.1
-scale_random = 0.3
-scale_curve = SubResource( 15 )
-color_ramp = SubResource( 13 )
-
-[sub_resource type="Animation" id=17]
-length = 3.0
-step = 0.05
+[sub_resource type="Animation" id=2]
+resource_name = "default"
+length = 0.6
 tracks/0/type = "value"
-tracks/0/path = NodePath("FireBurstParticles2D:emitting")
+tracks/0/path = NodePath("SpriteDiminuto1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("SparkleParticles2D:emitting")
+tracks/1/path = NodePath("SpriteDiminuto1:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("SmokeParticles2D:emitting")
+tracks/2/path = NodePath("SpriteDiminuto1:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("FireTrails/FireTrailParticles2D5:emitting")
+tracks/3/path = NodePath("SpriteDiminuto1:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("FireTrails/FireTrailParticles2D4:emitting")
+tracks/4/path = NodePath("SpriteDiminuto2:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.05, 0.55 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("FireTrails/FireTrailParticles2D3:emitting")
+tracks/5/path = NodePath("SpriteDiminuto2:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0.1, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("FireTrails/FireTrailParticles2D2:emitting")
+tracks/6/path = NodePath("SpriteDiminuto2:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.15, 0.65 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("FireTrails/FireTrailParticles2D:emitting")
+tracks/7/path = NodePath("SpriteDiminuto2:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ true ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("ExplosionSFX:playing")
+tracks/8/path = NodePath("SpritePeque1:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -229,453 +118,857 @@ tracks/8/enabled = true
 tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=18]
-resource_name = "Explode2"
-length = 3.0
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("FireBurstParticles2D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SparkleParticles2D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("SmokeParticles2D:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("FireTrails/FireTrailParticles2D5:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("FireTrails/FireTrailParticles2D4:emitting")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.2, 0.55 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("FireTrails/FireTrailParticles2D3:emitting")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0.1, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("FireTrails/FireTrailParticles2D2:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.65 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("FireTrails/FireTrailParticles2D:emitting")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("ExplosionSFX:playing")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=19]
-resource_name = "Explode3"
-length = 3.0
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("FireBurstParticles2D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SparkleParticles2D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("SmokeParticles2D:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("FireTrails/FireTrailParticles2D5:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("FireTrails/FireTrailParticles2D4:emitting")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.05, 0.55 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("FireTrails/FireTrailParticles2D3:emitting")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0.1, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, false ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("FireTrails/FireTrailParticles2D2:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.15, 0.65 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("FireTrails/FireTrailParticles2D:emitting")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("ExplosionSFX:playing")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=20]
-resource_name = "Explode4"
-length = 3.0
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("FireBurstParticles2D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SparkleParticles2D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("SmokeParticles2D:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("FireTrails/FireTrailParticles2D5:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("FireTrails/FireTrailParticles2D4:emitting")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0.05, 0.55 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("FireTrails/FireTrailParticles2D3:emitting")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0.1, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("FireTrails/FireTrailParticles2D2:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.15, 0.65 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, false ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("FireTrails/FireTrailParticles2D:emitting")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, false ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("ExplosionSFX:playing")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("SmokeParticles2D:scale")
+tracks/9/path = NodePath("SpritePeque1:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("SpritePeque1:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("SpritePeque1:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("SpritePeque2:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("SpritePeque2:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("SpritePeque2:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("SpritePeque2:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("SpriteMediano1:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("SpriteMediano1:rotation_degrees")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("SpriteMediano1:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("SpriteMediano1:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("SpriteMediano2:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("SpriteMediano2:rotation_degrees")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("SpriteMediano2:scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("SpriteMediano2:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "destruirse"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteDiminuto1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2, 1 ), Vector2( 2.5, 1 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 37, -7 ), Vector2( 50, -30 ), Vector2( 50, -30 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteDiminuto1:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -13.6859, 97.6571, 181.164, 209.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteDiminuto1:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 0.947807, 0.899216 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SpriteDiminuto1:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SpriteDiminuto2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 19, -33 ), Vector2( 40, -65 ), Vector2( 56, -75 ), Vector2( -10, 22 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("SpriteDiminuto2:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 12.6115, 207.8, -104.8, -209.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("SpriteDiminuto2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("SpriteDiminuto2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("SpritePeque1:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14, 17 ), Vector2( -49, -12 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("SpritePeque1:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 247.7 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("SpritePeque1:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("SpritePeque1:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("SpritePeque2:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3, -34 ), Vector2( 2, -68 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("SpritePeque2:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 58.0297, 220.897, 252.9 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("SpritePeque2:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("SpritePeque2:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("SpriteMediano1:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -38, -24 ), Vector2( -84, -64 ), Vector2( -105, -87 ), Vector2( -39, -26 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("SpriteMediano1:rotation_degrees")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 4.73969, -325.2 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("SpriteMediano1:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 0.7, 0.7 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("SpriteMediano1:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("SpriteMediano2:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 27 ), Vector2( -2.68221e-07, 82 ), Vector2( -5, 40 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("SpriteMediano2:rotation_degrees")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 0.5, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 40.6442, 136.179, 174.393, 193.5 ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("SpriteMediano2:scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 0.7, 0.7 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("SpriteMediano2:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("PuffSmooth:self_modulate")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.376471 ), Color( 1, 1, 1, 0.152941 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("PuffSmooth:scale")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 3, 3 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "destruirse2"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteDiminuto1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 34, 31 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteDiminuto1:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -232.3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SpriteDiminuto1:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SpriteDiminuto1:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SpriteDiminuto2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -32, -24 ), Vector2( -65, -74 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("SpriteDiminuto2:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 128.4 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("SpriteDiminuto2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("SpriteDiminuto2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("SpritePeque1:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -47, 27 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("SpritePeque1:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -185.8 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("SpritePeque1:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("SpritePeque1:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("SpritePeque2:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -18, -15 ), Vector2( 11, -30 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("SpritePeque2:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -154.8 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("SpritePeque2:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("SpritePeque2:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("SpriteMediano1:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 29, -15 ), Vector2( 120, -66 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("SpriteMediano1:rotation_degrees")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -13.7553, -147.1 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("SpriteMediano1:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("SpriteMediano1:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("SpriteMediano2:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -30, 28 ), Vector2( -86, 66 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("SpriteMediano2:rotation_degrees")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -139.4 ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("SpriteMediano2:scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("SpriteMediano2:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("PuffSmooth:scale")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 2, 2 ), Vector2( 3, 3 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("PuffSmooth:self_modulate")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0.3, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.231373 ), Color( 1, 1, 1, 0.231373 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="ExplosionMeteorito" type="Node2D"]
-z_index = 1
-z_as_relative = false
-script = ExtResource( 7 )
-
-[node name="SmokeParticles2D" type="Particles2D" parent="."]
-scale = Vector2( 2, 1 )
-amount = 16
-lifetime = 3.0
-preprocess = 0.6
-local_coords = false
-process_material = SubResource( 5 )
-texture = ExtResource( 3 )
-
-[node name="FireTrails" type="Node2D" parent="."]
-
-[node name="FireTrailParticles2D" type="Particles2D" parent="FireTrails"]
-modulate = Color( 1.2, 1.2, 1.2, 1 )
-amount = 50
-lifetime = 0.5
-randomness = 0.68
-local_coords = false
-process_material = SubResource( 8 )
-texture = ExtResource( 5 )
-
-[node name="FireTrailParticles2D2" type="Particles2D" parent="FireTrails"]
-modulate = Color( 1.2, 1.2, 1.2, 1 )
-amount = 50
-lifetime = 0.5
-randomness = 0.5
-local_coords = false
-draw_order = 1
-process_material = SubResource( 8 )
-texture = ExtResource( 5 )
-
-[node name="FireTrailParticles2D3" type="Particles2D" parent="FireTrails"]
-modulate = Color( 1.2, 1.2, 1.2, 1 )
-amount = 100
-lifetime = 0.5
-randomness = 0.5
-local_coords = false
-draw_order = 1
-process_material = SubResource( 8 )
-texture = ExtResource( 5 )
-
-[node name="FireTrailParticles2D4" type="Particles2D" parent="FireTrails"]
-modulate = Color( 1.2, 1.2, 1.2, 1 )
-amount = 50
-lifetime = 0.5
-randomness = 0.5
-local_coords = false
-draw_order = 1
-process_material = SubResource( 8 )
-texture = ExtResource( 5 )
-
-[node name="FireTrailParticles2D5" type="Particles2D" parent="FireTrails"]
-modulate = Color( 1.2, 1.2, 1.2, 1 )
-amount = 50
-lifetime = 0.5
-randomness = 0.5
-local_coords = false
-draw_order = 1
-process_material = SubResource( 8 )
-texture = ExtResource( 5 )
-
-[node name="FireBurstParticles2D" type="Particles2D" parent="."]
-modulate = Color( 1.2, 1.2, 1.2, 1 )
-amount = 64
-lifetime = 0.5
-randomness = 1.0
-local_coords = false
-draw_order = 1
-process_material = SubResource( 11 )
-texture = ExtResource( 3 )
-
-[node name="SparkleParticles2D" type="Particles2D" parent="."]
-modulate = Color( 1.2, 1.2, 1.2, 1 )
-amount = 64
-lifetime = 0.8
-explosiveness = 0.5
-randomness = 1.0
-visibility_rect = Rect2( -100, -100, 10, 200 )
-process_material = SubResource( 16 )
-texture = ExtResource( 1 )
+script = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Explode"
-anims/Explode = SubResource( 17 )
-anims/Explode2 = SubResource( 18 )
-anims/Explode3 = SubResource( 19 )
-anims/Explode4 = SubResource( 20 )
+autoplay = "destruirse"
+anims/default = SubResource( 2 )
+anims/destruirse = SubResource( 3 )
+anims/destruirse2 = SubResource( 4 )
 
-[node name="ExplosionSFX" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 4 )
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
 bus = "SFX"
+
+[node name="PuffSmooth" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.231373 )
+position = Vector2( 1, -1 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 9 )
+
+[node name="SpriteDiminuto1" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="SpriteDiminuto2" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+
+[node name="SpritePeque1" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="SpritePeque2" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="SpriteMediano1" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+
+[node name="SpriteMediano2" type="Sprite" parent="."]
+texture = ExtResource( 6 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

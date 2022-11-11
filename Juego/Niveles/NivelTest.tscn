@@ -12,7 +12,7 @@
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Juego/Niveles/CamaraNivel.gd" type="Script" id=11]
 [ext_resource path="res://Juego/EstaciondeRecarga/EstacionDeRecarga.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Juego/Niveles/Fondos/fondo.png" type="Texture" id=13]
+[ext_resource path="res://Juego/Niveles/Fondos/StarFieldBackground.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Juego/Enemigos/EnemigoInterceptor.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Juego/Estaciones/EstacionEnemiga/BaseEnemiga.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Juego/Estaciones/Rele/ReleMasa.tscn" type="PackedScene" id=16]
@@ -53,7 +53,7 @@ position = Vector2( 55, 100 )
 position = Vector2( -572, -27 )
 
 [node name="SectorDePeligro" parent="TriggersInterceptores" instance=ExtResource( 5 )]
-position = Vector2( -259, -1760 )
+position = Vector2( 184, -1765 )
 tipo_peligro = "Enemigo"
 numeros_peligro = 2
 
@@ -76,47 +76,6 @@ texture = ExtResource( 6 )
 position = Vector2( -306, 886 )
 scale = Vector2( 0.7, 0.7 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_ignore_camera_zoom = true
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 256, 256 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 13 )
-
-[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 13 )
-offset = Vector2( 500, 0 )
-
-[node name="Sprite3" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 13 )
-offset = Vector2( 1000, 0 )
-
-[node name="Sprite4" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 13 )
-offset = Vector2( 1500, 0 )
-
-[node name="Sprite5" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 0, 514 )
-texture = ExtResource( 13 )
-offset = Vector2( 1500, 0 )
-
-[node name="Sprite6" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( -549, 527 )
-texture = ExtResource( 13 )
-offset = Vector2( 1500, 0 )
-
-[node name="Sprite7" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( -1051, 527 )
-texture = ExtResource( 13 )
-offset = Vector2( 1500, 0 )
-
-[node name="Sprite8" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( -1530, 508 )
-texture = ExtResource( 13 )
-offset = Vector2( 1500, 0 )
-
 [node name="ContenedorBaseEnemiga" type="Node" parent="."]
 
 [node name="BaseEnemiga" parent="ContenedorBaseEnemiga" instance=ExtResource( 15 )]
@@ -131,6 +90,8 @@ position = Vector2( -629, -1365 )
 [node name="RestartTimer" type="Timer" parent="."]
 
 [node name="ActualizadorTmer" type="Timer" parent="."]
+
+[node name="StarFieldBackground" parent="." instance=ExtResource( 13 )]
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
 [connection signal="timeout" from="RestartTimer" to="." method="_on_RestartTimer_timeout"]
