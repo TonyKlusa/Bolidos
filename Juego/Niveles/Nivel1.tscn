@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Estaciones/EstacionEnemiga/BaseEnemiga.tscn" type="PackedScene" id=2]
+
+[node name="Nivel1" instance=ExtResource( 1 )]
+prox_nivel = "res://Juego/Niveles/Nivel2.tscn"
+
+[node name="BaseEnemiga" parent="ContenedorBaseEnemiga" index="0" instance=ExtResource( 2 )]
+position = Vector2( 1174, 582 )

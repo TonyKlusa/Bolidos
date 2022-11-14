@@ -1,0 +1,72 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Juego/Meteoritos/Meteorito.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Explosiones/ExplosionMeteorito.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Juego/Explosiones/Explosion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Juego/Niveles/Fondos/Fondo1.png" type="Texture" id=6]
+[ext_resource path="res://Juego/Niveles/Musicas/MusicaCombat.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Juego/Niveles/Musicas/MusicaNivel.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Juego/Estaciones/Rele/ReleMasa.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Juego/ui/HUD/HUD.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Juego/Niveles/Fondos/StarFieldBackground.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Juego/Enemigos/EnemigoInterceptor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://default_env.tres" type="Environment" id=14]
+[ext_resource path="res://Juego/Niveles/Nivel.gd" type="Script" id=15]
+[ext_resource path="res://Juego/Niveles/CamaraNivel.gd" type="Script" id=16]
+
+[node name="NivelBase" type="Node2D"]
+position = Vector2( 0, 1 )
+script = ExtResource( 15 )
+explosion = ExtResource( 4 )
+meteorito = ExtResource( 1 )
+explosion_meteorito = ExtResource( 2 )
+sector_meteoritos = ExtResource( 3 )
+enemigo_interceptor = ExtResource( 13 )
+rele_masa = ExtResource( 9 )
+tiempo_limite = 30
+musica_nivel = ExtResource( 8 )
+musica_combate = ExtResource( 7 )
+
+[node name="HUD" parent="." instance=ExtResource( 10 )]
+
+[node name="purple" type="Sprite" parent="."]
+visible = false
+position = Vector2( 962, 545 )
+scale = Vector2( 7.63672, 4.53516 )
+texture = ExtResource( 6 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 14 )
+
+[node name="TriggersLluviaMeteoritos" type="Node2D" parent="."]
+
+[node name="TriggersInterceptores" type="Node2D" parent="."]
+position = Vector2( -572, -27 )
+
+[node name="ContenedorEstacionDeRecarga" type="Node" parent="."]
+
+[node name="ContenedorBaseEnemiga" type="Node" parent="."]
+
+[node name="CamaraNivel" type="Camera2D" parent="."]
+position = Vector2( 55, 100 )
+scale = Vector2( 1.01687, 0.542525 )
+script = ExtResource( 16 )
+
+[node name="TweenZoom" type="Tween" parent="CamaraNivel"]
+
+[node name="TweenCamara" type="Tween" parent="."]
+
+[node name="RestartTimer" type="Timer" parent="."]
+
+[node name="ActualizadorTmer" type="Timer" parent="."]
+
+[node name="StarFieldBackground" parent="." instance=ExtResource( 12 )]
+
+[node name="Player" parent="." instance=ExtResource( 11 )]
+position = Vector2( 220, 468 )
+
+[connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
+[connection signal="timeout" from="RestartTimer" to="." method="_on_RestartTimer_timeout"]
+[connection signal="timeout" from="ActualizadorTmer" to="." method="_on_ActualizadorTmer_timeout"]

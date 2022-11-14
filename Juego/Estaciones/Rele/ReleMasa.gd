@@ -24,4 +24,4 @@ func atraer_player(body: Node) -> void:
 	$Tween.start()
 
 func _on_Tween_tween_all_completed() -> void:
-	print("geniex")
+	Eventos.emit_signal("nivel_completado")

@@ -12,6 +12,7 @@ bg_color = Color( 0.364721, 0.303371, 0.52832, 1 )
 
 [node name="MenuPrincipal" type="Node"]
 script = ExtResource( 2 )
+nivel_inicial = "res://Juego/Niveles/Nivel1.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1930.0
