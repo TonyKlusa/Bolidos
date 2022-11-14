@@ -21,9 +21,6 @@ var vol_original_musica_off: float = 0.0
 func get_lista_musicas() -> Dictionary:
 	return lista_musicas
 
-func play_musica(musica: AudioStreamPlayer) -> void:
-	stop_todo()
-	musica.play()
 	
 #Mtodos Custom
 func set_streams(stream_music: AudioStream, stream_combate: AudioStream) -> void:
@@ -39,7 +36,7 @@ func stop_todo() -> void:
 		if nodo is AudioStreamPlayer:
 			nodo.stop()
 
-func transicion_musicas() -> void:
+func transicion_musicas() -> void: #detecta que esta playing y lo apaga y prende el otro.
 	if musica_nivel.playing:
 		fade_in(musica_combate)
 		fade_out(musica_nivel)
@@ -75,6 +72,10 @@ func fade_out(musica_fade_out: AudioStreamPlayer) -> void:
 		Tween.EASE_IN_OUT
 	)
 	tween_off.start()
+	
+func play_musica(musica: AudioStreamPlayer) -> void:
+	stop_todo()
+	musica.play()
 	
 	## Señales internas
 func _on_TweenMusicaOff_tween_completed(object: Object, key: NodePath) -> void:

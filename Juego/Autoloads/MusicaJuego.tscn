@@ -22,3 +22,5 @@ bus = "Musica"
 [node name="BotonMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 bus = "Botones"
+
+[connection signal="tween_completed" from="TweenMusicaOff" to="." method="_on_TweenMusicaOff_tween_completed"]

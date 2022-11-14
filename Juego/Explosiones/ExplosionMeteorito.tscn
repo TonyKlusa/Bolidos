@@ -948,27 +948,51 @@ stream = ExtResource( 7 )
 bus = "SFX"
 
 [node name="PuffSmooth" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0.231373 )
+self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 1, -1 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 9 )
 
 [node name="SpriteDiminuto1" type="Sprite" parent="."]
+visible = false
+position = Vector2( 50, -30 )
+rotation = 3.64774
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 1 )
 
 [node name="SpriteDiminuto2" type="Sprite" parent="."]
+visible = false
+position = Vector2( -10, 22 )
+rotation = -3.64774
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 4 )
 
 [node name="SpritePeque1" type="Sprite" parent="."]
+visible = false
+position = Vector2( -49, -12 )
+rotation = 4.32318
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 2 )
 
 [node name="SpritePeque2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 2, -68 )
+rotation = 4.41394
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 3 )
 
 [node name="SpriteMediano1" type="Sprite" parent="."]
+visible = false
+position = Vector2( -39, -26 )
+rotation = -5.67581
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 5 )
 
 [node name="SpriteMediano2" type="Sprite" parent="."]
+visible = false
+position = Vector2( -5, 40 )
+rotation = 3.37721
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 6 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
