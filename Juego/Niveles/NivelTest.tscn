@@ -48,6 +48,7 @@ environment = ExtResource( 2 )
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" instance=ExtResource( 5 )]
 position = Vector2( 55, 100 )
+numeros_peligro = 2
 
 [node name="TriggersInterceptores" type="Node2D" parent="."]
 position = Vector2( -572, -27 )
@@ -85,7 +86,7 @@ z_index = 0
 z_as_relative = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -629, -1365 )
+position = Vector2( 220, 468 )
 
 [node name="RestartTimer" type="Timer" parent="."]
 

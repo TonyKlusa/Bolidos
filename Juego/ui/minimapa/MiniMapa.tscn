@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Juego/ui/minimapa/minimapa.png" type="Texture" id=1]
 [ext_resource path="res://Juego/ui/minimapa/iconos/player_icon.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Juego/ui/minimapa/iconos/base_enemiga_icon_C.png" type="Texture" id=5]
 [ext_resource path="res://Juego/ui/minimapa/iconos/interceptor_icon.png" type="Texture" id=6]
 [ext_resource path="res://Juego/ui/minimapa/iconos/rele_masa_icon.png" type="Texture" id=7]
+[ext_resource path="res://Juego/Explosiones/meteor_dim1.png" type="Texture" id=8]
 
 [node name="MiniMapa" type="MarginContainer"]
 anchor_left = 0.5
@@ -68,6 +69,13 @@ modulate = Color( 1, 0.890196, 0, 1 )
 position = Vector2( 219, 85 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 6 )
+
+[node name="IconoMeteorito" type="Sprite" parent="CuadroMiniMapa/ContenedorIconos/ZonaRenderizadoMiniMapa"]
+visible = false
+modulate = Color( 0.670588, 0.803922, 0.796078, 1 )
+position = Vector2( 200, 41.5 )
+scale = Vector2( 0.571429, 0.464286 )
+texture = ExtResource( 8 )
 
 [node name="TimerVisibilidad" type="Timer" parent="."]
 one_shot = true

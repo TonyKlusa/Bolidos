@@ -26,6 +26,8 @@ onready var Impacto_fx = $Impacto_fx
 func set_esta_en_sector(valor:bool) ->void:
 	esta_en_sector = valor
 
+func _ready() -> void:
+	Eventos.emit_signal("minimapa_objeto_creado")
 #func _ready() -> void:
 #	pass 
 #	#linear_velocity = vel_lineal_base #Saco para hacerlo funcional

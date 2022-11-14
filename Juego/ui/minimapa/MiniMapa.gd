@@ -18,6 +18,7 @@ onready var icono_base: Sprite = $CuadroMiniMapa/ContenedorIconos/ZonaRenderizad
 onready var icono_estacion: Sprite = $CuadroMiniMapa/ContenedorIconos/ZonaRenderizadoMiniMapa/IconoEstacion
 onready var icono_rele: Sprite = $CuadroMiniMapa/ContenedorIconos/ZonaRenderizadoMiniMapa/IconoRele
 onready var icono_interceptor: Sprite = $CuadroMiniMapa/ContenedorIconos/ZonaRenderizadoMiniMapa/IconoInterceptor
+#onready var icono_meteorito: Sprite = $CuadroMiniMapa/ContenedorIconos/ZonaRenderizadoMiniMapa/IconoMeteorito
 onready var items_mini_map: Dictionary = {}
 #Visibilidad del minimapa
 onready var timer_visibilidad: Timer = $TimerVisibilidad
@@ -94,6 +95,8 @@ func obtener_objetos_minimapa() -> void:
 				sprite_icono = icono_interceptor.duplicate()
 			elif objeto is ReleMasa:
 				sprite_icono = icono_rele.duplicate()
+#			elif objeto is Meteorito:
+#				sprite_icono = icono_meteorito.duplicate()
 #			elif objeto is EstacionReparacion:
 #				sprite_icon = icon_reparacion.duplicate()
 #

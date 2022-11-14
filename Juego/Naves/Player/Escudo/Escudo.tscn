@@ -258,10 +258,8 @@ scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 4 )
 
 [node name="Completo" type="Sprite" parent="."]
-visible = false
 position = Vector2( -9, 0 )
 rotation = 1.5708
-scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
