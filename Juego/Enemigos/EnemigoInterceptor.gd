@@ -6,7 +6,7 @@ extends EnemigoBase
 enum ESTADO_IA {IDLE, ATACANDOQ, ATACANDOP, PERSECUCION}
 
 ## Attibs
-var estado_ia_actual: int = ESTADO_IA.IDLE
+var estado_ia_actual: int = ESTADO_IA.ATACANDOP
 var potencia_actual: float = 0.0
 
 ## Atributos export

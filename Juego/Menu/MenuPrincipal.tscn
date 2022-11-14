@@ -30,4 +30,18 @@ custom_fonts/font = SubResource( 1 )
 custom_styles/hover = SubResource( 2 )
 text = "JUGAR"
 
+[node name="Button2" type="Button" parent="."]
+anchor_right = 0.031
+anchor_bottom = 0.019
+margin_left = 810.0
+margin_top = 757.0
+margin_right = 1198.48
+margin_bottom = 921.48
+rect_scale = Vector2( 0.727559, 0.639998 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+text = "SALIR"
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
