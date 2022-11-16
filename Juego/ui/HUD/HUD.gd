@@ -13,7 +13,7 @@ onready var info_escudo: ContenedorInformacionEnergia = $InfoEscudo
 
 func _ready() -> void:
 	conectar_seniales()
-
+	
 func conectar_seniales()-> void:
 	Eventos.connect("nivel_iniciado",self, "fade_out")
 	Eventos.connect("actualizar_tiempo", self, "_on_actualizar_info_tiempo")
@@ -42,12 +42,6 @@ func _on_actualizar_info_tiempo(tiempo_restante: int) -> void:
 	elif tiempo_restante == 0:
 		info_tiempo_restante.ocultar()
 	
-	
-func fade_in() -> void:
-	$FadeCanvas/AnimationPlayer.play("fade_in")
-
-func fade_out() -> void:
-	$FadeCanvas/AnimationPlayer.play_backwards("fade_in")
 
 func _on_detecto_zona_recarga(en_zona: bool) -> void:
 	if en_zona:
@@ -74,3 +68,13 @@ func _on_nave_destruida(nave: NaveBase,_posicion, _explosiones) -> void:
 	if nave is Player:
 		get_tree().call_group("contenedor_info", "set_esta_activo", false)
 		get_tree().call_group("contenedor_info", "Ocultar")
+
+
+#Metodos Custom
+
+func fade_in() -> void:
+	$FadeCanvas/AnimationPlayer.play("fade_in")
+
+func fade_out() -> void:
+	$FadeCanvas/AnimationPlayer.play_backwards("fade_in")
+

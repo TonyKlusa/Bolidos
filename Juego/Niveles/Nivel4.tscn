@@ -5,23 +5,32 @@
 [ext_resource path="res://Juego/EstaciondeRecarga/EstacionDeRecarga.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Juego/Estaciones/EstacionEnemiga/BaseEnemiga.tscn" type="PackedScene" id=4]
 
-[node name="Nivel2" instance=ExtResource( 1 )]
-tiempo_limite = 240
-prox_nivel = "res://Juego/Niveles/Nivel3.tscn"
+[node name="Nivel4" instance=ExtResource( 1 )]
+tiempo_limite = 480
 
 [node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" index="0" instance=ExtResource( 2 )]
-position = Vector2( 6, 135 )
-numeros_peligro = 10
+position = Vector2( 1924, 127 )
+
+[node name="SectorDePeligro2" parent="TriggersLluviaMeteoritos" index="1" instance=ExtResource( 2 )]
+numeros_peligro = 5
 
 [node name="SectorDePeligro" parent="TriggersInterceptores" index="0" instance=ExtResource( 2 )]
-position = Vector2( 2781, 149 )
+position = Vector2( 2574, -1003 )
 tipo_peligro = "Enemigo"
 
+[node name="SectorDePeligro2" parent="TriggersInterceptores" index="1" instance=ExtResource( 2 )]
+position = Vector2( 529, -983 )
+tipo_peligro = "Enemigo"
+numeros_peligro = 2
+
 [node name="EstacionDeRecarga" parent="ContenedorEstacionDeRecarga" index="0" instance=ExtResource( 3 )]
-position = Vector2( 1013, 1996 )
-energia = 20.0
+position = Vector2( -970, -560 )
+
+[node name="EstacionDeRecarga2" parent="ContenedorEstacionDeRecarga" index="1" instance=ExtResource( 3 )]
+position = Vector2( 2962, 1945 )
 
 [node name="BaseEnemiga" parent="ContenedorBaseEnemiga" index="0" instance=ExtResource( 4 )]
-position = Vector2( 839, -773 )
-hitpoints = 15.0
-numero_orbitales = 7
+position = Vector2( 1027, 2016 )
+
+[node name="BaseEnemiga2" parent="ContenedorBaseEnemiga" index="1" instance=ExtResource( 4 )]
+position = Vector2( -1805, 1797 )

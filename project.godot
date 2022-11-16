@@ -166,7 +166,7 @@ _global_script_class_icons={
 
 config/name="Bólidos_"
 run/main_scene="res://Juego/Menu/MenuPrincipal.tscn"
-config/icon="res://icono_juego.png"
+config/icon="res://Icono_juego.png"
 
 [autoload]
 
