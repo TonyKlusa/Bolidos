@@ -1,10 +1,11 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Juego/ui/HUD/HUD.gd" type="Script" id=1]
-[ext_resource path="res://TemporalAssets/spaceshooter/PNG/playerShip1_orange.png" type="Texture" id=2]
+[ext_resource path="res://Juego/ui/HUD/player_orange.png" type="Texture" id=2]
 [ext_resource path="res://Juego/ui/HUD/ContenedorInformacion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Juego/ui/HUD/ContenedorInformacionEnergia.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juego/ui/minimapa/MiniMapa.tscn" type="PackedScene" id=5]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"

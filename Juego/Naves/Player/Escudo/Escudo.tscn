@@ -4,7 +4,8 @@
 [ext_resource path="res://Juego/Naves/Player/Escudo/shield3.png" type="Texture" id=2]
 [ext_resource path="res://Juego/Naves/Player/Escudo/shield1.png" type="Texture" id=3]
 [ext_resource path="res://Juego/Naves/Player/Escudo/shield2.png" type="Texture" id=4]
-[ext_resource path="res://TemporalAssets/sci-fi-sounds/Audio/forceField_000.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Juego/SFX/forceField_000.ogg" type="AudioStream" id=5]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 77.026

@@ -2,7 +2,8 @@
 
 [ext_resource path="res://Juego/Autoloads/MusicaJuego.gd" type="Script" id=1]
 [ext_resource path="res://Juego/Niveles/Musicas/MusicaMenuPrincipal.ogg" type="AudioStream" id=2]
-[ext_resource path="res://TemporalAssets/spaceshooter/Bonus/sfx_twoTone.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Juego/SFX/sfx_twoTone.ogg" type="AudioStream" id=3]
+
 
 [node name="MusicaJuego" type="Node"]
 script = ExtResource( 1 )
